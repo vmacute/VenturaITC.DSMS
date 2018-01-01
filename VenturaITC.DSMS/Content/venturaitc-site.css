@@ -1,0 +1,21 @@
+﻿/*
+ * Copyright © 2017, Ventura IT & Consulting
+ * http://venturaitc.co.mz
+*/
+
+.site-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #B11d49;
+}
+
+.site-company {
+    font-size: large;
+    font-weight: bold;
+}
+
+.site-footer {
+    text-align: center;
+    font-size: 12px;
+}
+

@@ -1,0 +1,9 @@
+﻿/*
+ * Copyright © 2017, Ventura IT & Consulting
+ * http://venturaitc.co.mz
+*/
+
+.form-group.required .control-label:after {
+    content: " *";
+    color: red;
+ }

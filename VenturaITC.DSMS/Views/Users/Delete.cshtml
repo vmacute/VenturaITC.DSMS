@@ -1,0 +1,144 @@
+﻿@model VenturaITC.DSMS.Models.user
+
+@{
+    ViewBag.Title = Resources.ResourcesFields.UserDelete;
+}
+
+<h2>@Resources.ResourcesFields.UserDelete</h2>
+
+<h3>@Resources.ResourcesFields.DeleteConfirmation</h3>
+<div>
+    @*<h4>user</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.full_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.full_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cell_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cell_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.locked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.locked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.disabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.disabled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.must_change_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.must_change_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_password_change)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_password_change)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.logged)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.logged)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.current_login_attempts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.current_login_attempts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.registration_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registration_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.registration_user)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.registration_user)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.db_data_status.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.db_data_status.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_role.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_role.description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value=@Resources.ResourcesFields.Delete class="btn btn-primary" /> |
+            @Html.ActionLink(@Resources.ResourcesFields.BackToList, "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,83 @@
+﻿@model VenturaITC.DSMS.Models.user
+
+@{
+    ViewBag.Title = Resources.ResourcesFields.UserCreate;
+}
+
+<h2>@Resources.ResourcesFields.UserCreate</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @*<h4>user</h4>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group required">
+            @Html.LabelFor(model => model.full_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.full_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.full_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group required">
+            @Html.LabelFor(model => model.cell_phone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cell_phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.cell_phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group required">
+            @Html.LabelFor(model => model.role, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("role", null, @Resources.ResourcesFields.DropdownDefaultSelectedText, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group required">
+            @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group required">
+            @Html.LabelFor(model => model._password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model._password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model._password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group required">
+            @Html.LabelFor(model => model._passwordConfirm, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model._passwordConfirm, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model._passwordConfirm, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value=@Resources.ResourcesFields.Save class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(@Resources.ResourcesFields.BackToList, "Index")
+</div>

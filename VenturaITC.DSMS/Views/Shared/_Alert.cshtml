@@ -1,0 +1,49 @@
+﻿@{
+    if (ViewBag.AlertSucess != null)
+    {
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <img src="~/Images/success.png" width="40" height="40" />
+            &nbsp;
+            <strong>@ViewBag.AlertSucess</strong>
+        </div>
+    }
+
+    if (ViewBag.AlertWarning != null)
+    {
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <img src="~/Images/warning.png" width="40" height="40" />
+            &nbsp;
+            <strong>@ViewBag.AlertWarning</strong>
+        </div>
+    }
+
+    if (ViewBag.AlertDanger != null)
+    {
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <img src="~/Images/danger.png" width="40" height="40" />
+            &nbsp;
+            <strong>@ViewBag.AlertDanger</strong>
+        </div>
+    }
+
+    if (ViewBag.AlertInfo != null)
+    {
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <img src="~/Images/info.png" width="40" height="40" />
+            &nbsp;
+            <strong>@ViewBag.AlertInfo</strong>
+        </div>
+    }
+}

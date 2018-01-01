@@ -1,0 +1,177 @@
+﻿@model IEnumerable<VenturaITC.DSMS.Models.user>
+
+@{
+    ViewBag.Title = Resources.ResourcesFields.UserList;
+}
+
+@section scripts
+{
+    <script>
+        //var TeamDetailPostBackURL = '/Users/ResetUserPassword';
+        //$(function () {
+        //    $(".anchorDetail").click(function () {
+        //        debugger;
+        //        var $buttonClicked = $(this);
+        //        var username = $buttonClicked.attr('data-id');
+        //        var options = { "backdrop": "static", keyboard: true };
+        //        $.ajax({
+        //            type: "POST",
+        //            url: TeamDetailPostBackURL,
+        //            contentType: "application/json; charset=utf-8",
+        //            data: '{id: "' + username + '" }',
+        //                  datatype: "json",
+        //            success: function (data) {
+        //                debugger;
+        //                $('#myModalContent').html(data);
+        //                $('#myModal').modal(options);
+        //                $('#myModal').modal('show');
+
+        //            },
+        //            error: function () {
+        //                alert("Dynamic content load failed.");
+        //            }
+        //        });
+        //    });
+        //    //$("#closebtn").on('click',function(){
+        //    //    $('#myModal').modal('hide');
+
+        //    $("#closbtn").click(function () {
+        //        $('#myModal').modal('hide');
+        //    });
+        //});
+
+        //$(function () {
+        //    $("#dialog").dialog({
+        //        autoOpen: false,
+        //        modal: true,
+        //        title: "View Details"
+        //    });
+
+        //    $("#CustomerGrid .details").click(function () {
+        //        //var customerId = $(this).closest("tr").find("td").eq(0).html();
+        //        var customerId = "sysadmin";
+        //        $.ajax({
+        //            type: "POST",
+        //            url: "/Users/ResetUserPassword",
+        //            data: '{customerId: "' + customerId + '" }',
+        //            contentType: "application/json; charset=utf-8",
+        //            dataType: "html",
+        //            success: function (response) {
+        //                $('#dialog').html(response);
+        //                $('#dialog').dialog('open');
+        //            },
+        //            failure: function (response) {
+        //                alert(response.responseText);
+        //            },
+        //            error: function (response) {
+        //                alert(response.responseText);
+        //            }
+        //        });
+        //    });
+        //});
+
+
+
+        function showReset(username) {
+
+            $.ajax({
+                type: "POST",
+                url: "/Users/ShowResetUserPassword",
+                data: { id: username },
+                success: function (response) {
+                    $("#myBody").html(response);
+                    $("#myModal").modal("show");
+
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+
+        }
+    </script>
+}
+
+
+<h2>@Resources.ResourcesFields.UserList</h2>
+
+<p>
+    @Html.ActionLink(Resources.ResourcesFields.CreateNew, "Create")
+</p>
+<table class="table" id="CustomerGrid">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_role.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.locked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.disabled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.logged)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.current_login_attempts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.db_data_status.description)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_role.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.locked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.disabled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.logged)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.current_login_attempts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.db_data_status.description)
+            </td>
+
+            <td>
+                @Html.ActionLink(Resources.ResourcesFields.Edit, "Edit", new { id = item.username }) &nbsp;
+                @Html.ActionLink(Resources.ResourcesFields.Details, "Details", new { id = item.username }) &nbsp;
+                @Html.ActionLink(Resources.ResourcesFields.Delete, "Delete", new { id = item.username })
+                @Html.ActionLink(Resources.ResourcesFields.UserPasswordReset, "ResetPassword", new { id = item.username })
+                @*<a href="javascript:void(0);" class="anchorDetail" data-id="@item.username">Details</a>*@
+                <a href="#" class="btn btn-success" onclick="showReset('@item.username')"><i class="glyphicon glyphicon-trash"></i></a>
+            </td>
+        </tr>
+    }
+</table>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="myBody">
+
+        </div>
+    </div>
+</div>

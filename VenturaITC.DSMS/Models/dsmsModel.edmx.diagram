@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c9b119dd101b44a798bcb0eaf04080b9" Name="Diagram1">
+        <EntityTypeShape EntityType="dsmsModel.academic_level" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.category" Width="1.5" PointX="7.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.db_data_status" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.document_type" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.gender" Width="1.5" PointX="9.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.holiday" Width="1.5" PointX="7.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.id_issuance_place" Width="1.5" PointX="9.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.marital_status" Width="1.5" PointX="10.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.parameterization" Width="1.5" PointX="10.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.parameterization_bool" Width="1.5" PointX="11.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.payment_installment" Width="1.5" PointX="11.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.payment_status" Width="1.5" PointX="12.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.payment_type" Width="1.5" PointX="12.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.province" Width="1.5" PointX="7.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.student" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.student_documentation" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.student_enrollment" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.student_payment" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.student_type" Width="1.5" PointX="9.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.user" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dsmsModel.user_role" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="dsmsModel.FK_User_DBDataStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="dsmsModel.FK_StudentDocumentation_DocumentType" ManuallyRouted="false" />
+        <AssociationConnector Association="dsmsModel.FK_StudentDocumentation_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="dsmsModel.FK_StudentPayment_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="dsmsModel.FK_StudentRegistration_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="dsmsModel.FK_StudentRegistration_User" ManuallyRouted="false" />
+        <AssociationConnector Association="dsmsModel.FK_StudentPayment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="dsmsModel.FK_User_UserRole" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
