@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VenturaITC.DB.Repository", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VenturaITC.Security", "VenturaITC.Security\VenturaITC.Security.csproj", "{F256C906-C80F-454F-82ED-7D29B462D3CC}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "VenturaITC.DSMS.DB", "VenturaITC.DSMS.DB\VenturaITC.DSMS.DB.sqlproj", "{203ED4C7-A757-410E-B9A2-D9A29B2C5C6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,12 @@ Global
 		{F256C906-C80F-454F-82ED-7D29B462D3CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F256C906-C80F-454F-82ED-7D29B462D3CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F256C906-C80F-454F-82ED-7D29B462D3CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{203ED4C7-A757-410E-B9A2-D9A29B2C5C6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{203ED4C7-A757-410E-B9A2-D9A29B2C5C6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{203ED4C7-A757-410E-B9A2-D9A29B2C5C6E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{203ED4C7-A757-410E-B9A2-D9A29B2C5C6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{203ED4C7-A757-410E-B9A2-D9A29B2C5C6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{203ED4C7-A757-410E-B9A2-D9A29B2C5C6E}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
