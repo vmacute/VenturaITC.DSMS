@@ -111,6 +111,7 @@ namespace VenturaITC.DSMS.Models
 
         [Display(Name = "FullName", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "FullNameRequired")]
+        [RegularExpression("([A-Z][a-z]{3,} )([A-Z][a-z]{3,} )?([A-Z][a-z]{3,})", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "NameMalformed")]
         public string full_name;
 
         [Display(Name = "FirstName", ResourceType = typeof(ResourcesFields))]
@@ -121,6 +122,7 @@ namespace VenturaITC.DSMS.Models
         
         [Display(Name = "Birthdate", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "BirthdateRequired")]
+        [DataType(DataType.Date)]
         public DateTime birth_date;
 
         [Display(Name = "PlaceOfBirth", ResourceType = typeof(ResourcesFields))]
@@ -140,6 +142,7 @@ namespace VenturaITC.DSMS.Models
 
         [Display(Name = "IDNumber", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDNumberRequired")]
+        [RegularExpression(@"^\d{12}[A-Z]$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDNumberMalformed")]
         public string id_number;
 
         [Display(Name = "IDIssuancePlace", ResourceType = typeof(ResourcesFields))]
@@ -148,26 +151,33 @@ namespace VenturaITC.DSMS.Models
 
         [Display(Name = "IDIssuanceDate", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDIssuanceDateRequired")]
+        [DataType(DataType.Date)]
         public DateTime id_issuance_date;
 
         [Display(Name = "IDExpiryDate", ResourceType = typeof(ResourcesFields))]
+        [DataType(DataType.Date)]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDExpiryDateRequired")]
+        [RegularExpression(@"^\d{12}[A-Z]$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDNumberMalformed")]
         public DateTime id_expiry_date;
 
         [Display(Name = "JobTitle", ResourceType = typeof(ResourcesFields))]
         public string job_title;
 
         [Display(Name = "PhoneNumber", ResourceType = typeof(ResourcesFields))]
+        [RegularExpression(@"^21(\d{6})|281(\d{6})|282(\d{6})|293(\d{6})|23(\d{6})|251(\d{6})252(\d{6})|24(\d{6})|26(\d{6})|271(\d{6})|272(\d{6})$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PhoneMalformed")]
         public string phone_number;
 
         [Display(Name = "CellPhone1", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "CellPhone1Required")]
+        [RegularExpression(@"^82(\d{7})|83(\d{7})|84(\d{7})|85(\d{7})|86(\d{7})|87(\d{7})$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "CellPhoneMalformed")]
         public string cell_phone1;
 
         [Display(Name = "CellPhone2", ResourceType = typeof(ResourcesFields))]
+        [RegularExpression(@"^82(\d{7})|83(\d{7})|84(\d{7})|85(\d{7})|86(\d{7})|87(\d{7})$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "CellPhoneMalformed")]
         public string cell_phone2;
 
         [Display(Name = "Email", ResourceType = typeof(ResourcesFields))]
+        [DataType(DataType.EmailAddress)]
         public string email;
     }
 

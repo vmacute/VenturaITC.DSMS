@@ -300,7 +300,13 @@
     <Compile Include="Models\user_role.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Utils\SecurityUtils.cs" />
     <Compile Include="Utils\StringUtils.cs" />
     <Compile Include="Utils\UserUtils.cs" />
@@ -352,6 +358,10 @@
     <Content Include="Models\dsmsModel.edmx.diagram">
       <DependentUpon>dsmsModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resources\devenvdesc.dll.mui" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

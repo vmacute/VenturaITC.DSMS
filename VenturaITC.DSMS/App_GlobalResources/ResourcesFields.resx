@@ -375,4 +375,10 @@
   <data name="StudentTypeRequired" xml:space="preserve">
     <value>O campo {0} é de preenchimento obrigatório.</value>
   </data>
+  <data name="IDNumberMalformed" xml:space="preserve">
+    <value>{0} inválido!</value>
+  </data>
+  <data name="PhoneMalformed" xml:space="preserve">
+    <value>{0}  inválido! Exemplo de número válido: 21654321</value>
+  </data>
 </root>

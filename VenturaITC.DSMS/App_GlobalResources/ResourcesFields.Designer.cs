@@ -412,6 +412,15 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} inválido!.
+        /// </summary>
+        public static string IDNumberMalformed {
+            get {
+                return ResourceManager.GetString("IDNumberMalformed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
         /// </summary>
         public static string IDNumberRequired {
@@ -615,6 +624,15 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         public static string PasswordReset {
             get {
                 return ResourceManager.GetString("PasswordReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}  inválido! Exemplo de número válido: 21654321.
+        /// </summary>
+        public static string PhoneMalformed {
+            get {
+                return ResourceManager.GetString("PhoneMalformed", resourceCulture);
             }
         }
         
