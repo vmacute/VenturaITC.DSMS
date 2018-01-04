@@ -12,21 +12,19 @@ namespace VenturaITC.DSMS.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Validation;
-    using System.Diagnostics;
-
+    
     public partial class dsmsEntities : DbContext
     {
         public dsmsEntities()
             : base("name=dsmsEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<academic_level> academic_level { get; set; }
         public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<db_data_status> db_data_status { get; set; }
@@ -41,46 +39,14 @@ namespace VenturaITC.DSMS.Models
         public virtual DbSet<payment_status> payment_status { get; set; }
         public virtual DbSet<payment_type> payment_type { get; set; }
         public virtual DbSet<province> provinces { get; set; }
+        public virtual DbSet<status> status { get; set; }
         public virtual DbSet<student> students { get; set; }
         public virtual DbSet<student_documentation> student_documentation { get; set; }
         public virtual DbSet<student_enrollment> student_enrollment { get; set; }
         public virtual DbSet<student_payment> student_payment { get; set; }
         public virtual DbSet<student_type> student_type { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<user_role> user_role { get; set; }
-
-
-        /// <summary>
-        /// Overriding the base.SaveChanges() so that we can get the EntityValidationErrors.
-        /// </summary>
-        /// <returns></returns>
-        public override int SaveChanges()
-        {
-            try
-            {
-                return base.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                System.Text.StringBuilder errorStr = new System.Text.StringBuilder();
-                foreach (var validationErrors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        //Trace.TraceInformation("Class: {0}, Property: {1}, Error: {2}",
-                        //    validationErrors.Entry.Entity.GetType().FullName,
-                        //    validationError.PropertyName,
-                        //    validationError.ErrorMessage);
-
-                        errorStr.Append(String.Format("Class: {0}, Property: {1}, Error: {2}",
-                            validationErrors.Entry.Entity.GetType().FullName,
-                            validationError.PropertyName,
-                            validationError.ErrorMessage));
-                    }
-                }
-
-                throw;
-            }
-        }
     }
 }

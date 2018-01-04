@@ -20,8 +20,8 @@ namespace VenturaITC.DSMS.Models
             this.student_documentation = new HashSet<student_documentation>();
         }
     
-        public string type { get; set; }
-        public string description { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
         public string file_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

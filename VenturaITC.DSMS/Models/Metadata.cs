@@ -36,7 +36,7 @@ namespace VenturaITC.DSMS.Models
         [Display(Name = "UserRole", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "UserRoleRequired")]
         public string role;
-        
+
         [Display(Name = "Locked", ResourceType = typeof(ResourcesFields))]
         public bool locked;
 
@@ -101,5 +101,109 @@ namespace VenturaITC.DSMS.Models
 
         [Display(Name = "Status", ResourceType = typeof(ResourcesFields))]
         public string description;
+    }
+
+    public class StudentMetadata
+    {
+        [Display(Name = "StudentNumber", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "StudentNumberRequired")]
+        public int number;
+
+        [Display(Name = "FullName", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "FullNameRequired")]
+        public string full_name;
+
+        [Display(Name = "FirstName", ResourceType = typeof(ResourcesFields))]
+        public string first_name;
+
+        [Display(Name = "LastName", ResourceType = typeof(ResourcesFields))]
+        public string last_name;
+        
+        [Display(Name = "Birthdate", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "BirthdateRequired")]
+        public DateTime birth_date;
+
+        [Display(Name = "PlaceOfBirth", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PlaceOfBirthRequired")]        
+        public string place_of_birth;
+
+        [Display(Name = "FathersName", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "FathersNameRequired")]
+        public string fathers_name;
+
+        [Display(Name = "MothersName", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "MothersNameRequired")]
+        public string mothers_name;
+
+        [Display(Name = "Address", ResourceType = typeof(ResourcesFields))]
+        public string address;
+
+        [Display(Name = "IDNumber", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDNumberRequired")]
+        public string id_number;
+
+        [Display(Name = "IDIssuancePlace", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDIssuancePlaceRequired")]
+        public string id_issuance_place;
+
+        [Display(Name = "IDIssuanceDate", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDIssuanceDateRequired")]
+        public DateTime id_issuance_date;
+
+        [Display(Name = "IDExpiryDate", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDExpiryDateRequired")]
+        public DateTime id_expiry_date;
+
+        [Display(Name = "JobTitle", ResourceType = typeof(ResourcesFields))]
+        public string job_title;
+
+        [Display(Name = "PhoneNumber", ResourceType = typeof(ResourcesFields))]
+        public string phone_number;
+
+        [Display(Name = "CellPhone1", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "CellPhone1Required")]
+        public string cell_phone1;
+
+        [Display(Name = "CellPhone2", ResourceType = typeof(ResourcesFields))]
+        public string cell_phone2;
+
+        [Display(Name = "Email", ResourceType = typeof(ResourcesFields))]
+        public string email;
+    }
+
+    public class StudentTypeMetadata
+    {
+        [Display(Name = "StudentType", ResourceType = typeof(ResourcesFields))]
+        public string name;
+    }
+
+    public class GenderMetadata
+    {
+        [Display(Name = "Gender", ResourceType = typeof(ResourcesFields))]
+        public string name;
+    }
+
+    public class MaritalStatusMetadata
+    {
+        [Display(Name = "MaritalStatus", ResourceType = typeof(ResourcesFields))]
+        public string name;
+    }
+
+    public class ProvinceMetadata
+    {
+        [Display(Name = "ProvinceOfBirth", ResourceType = typeof(ResourcesFields))]
+        public string name;
+    }
+
+    public class AcademicLevelMetadata
+    {
+        [Display(Name = "AcademicLevel", ResourceType = typeof(ResourcesFields))]
+        public string name;
+    }
+
+    public class StatusMetadata
+    {
+        [Display(Name = "Status", ResourceType = typeof(ResourcesFields))]
+        public string name;
     }
 }

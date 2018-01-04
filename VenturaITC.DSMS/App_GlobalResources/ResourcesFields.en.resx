@@ -249,7 +249,7 @@
   <data name="HomePage" xml:space="preserve">
     <value>Home Page</value>
   </data>
-  <data name="DropdownDefaultSelectedText" xml:space="preserve">
+  <data name="DropdownOptionLabel" xml:space="preserve">
     <value>-Select-</value>
   </data>
   <data name="Close" xml:space="preserve">
@@ -257,5 +257,8 @@
   </data>
   <data name="PasswordReset" xml:space="preserve">
     <value>Password Reset</value>
+  </data>
+  <data name="StudentCreate" xml:space="preserve">
+    <value>Student Enrolment</value>
   </data>
 </root>

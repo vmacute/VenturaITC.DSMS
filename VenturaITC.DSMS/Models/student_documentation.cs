@@ -16,7 +16,7 @@ namespace VenturaITC.DSMS.Models
     {
         public int id { get; set; }
         public int student_number { get; set; }
-        public string document_type { get; set; }
+        public int document_type { get; set; }
         public byte[] document_content { get; set; }
     
         public virtual document_type document_type1 { get; set; }

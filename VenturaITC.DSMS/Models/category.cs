@@ -14,8 +14,8 @@ namespace VenturaITC.DSMS.Models
     
     public partial class category
     {
+        public int id { get; set; }
         public string name { get; set; }
-        public string description { get; set; }
         public decimal cost { get; set; }
     }
 }

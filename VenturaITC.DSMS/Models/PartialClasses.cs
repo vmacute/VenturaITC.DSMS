@@ -25,4 +25,46 @@ namespace VenturaITC.DSMS.Models
     public partial class db_data_status
     {
     }
+
+    [MetadataType(typeof(StudentMetadata))]
+    public partial class student
+    {
+
+    }
+
+    [MetadataType(typeof(StudentTypeMetadata))]
+    public partial class student_type
+    {
+
+    }
+    [MetadataType(typeof(AcademicLevelMetadata))]
+    public partial class academic_level
+    {
+
+    }
+
+    [MetadataType(typeof(ProvinceMetadata))]
+    public partial class province
+    {
+
+    }
+
+    [MetadataType(typeof(MaritalStatusMetadata))]
+    public partial class marital_status
+    {
+
+    }
+
+    [MetadataType(typeof(GenderMetadata))]
+    public partial class gender
+    {
+
+    }
+
+    [MetadataType(typeof(StatusMetadata))]
+    public partial class status
+    {
+
+    }
+
 }

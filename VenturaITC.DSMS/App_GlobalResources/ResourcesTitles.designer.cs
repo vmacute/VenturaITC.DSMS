@@ -22,14 +22,14 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "14.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ResourcesMenus {
+    internal class ResourcesTitles {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourcesMenus() {
+        internal ResourcesTitles() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.ResourcesMenus", global::System.Reflection.Assembly.Load("App_GlobalResources"));
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.ResourcesTitles", global::System.Reflection.Assembly.Load("App_GlobalResources"));
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,56 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Criar Novo.
+        ///   Looks up a localized string similar to Registo de Aluno.
         /// </summary>
-        internal static string CreateNew {
+        internal static string StudentCreate {
             get {
-                return ResourceManager.GetString("CreateNew", resourceCulture);
+                return ResourceManager.GetString("StudentCreate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Início.
+        ///   Looks up a localized string similar to Dados do Aluno.
         /// </summary>
-        internal static string Home {
+        internal static string StudentData {
             get {
-                return ResourceManager.GetString("Home", resourceCulture);
+                return ResourceManager.GetString("StudentData", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gestão.
+        ///   Looks up a localized string similar to Novo Utilizador.
         /// </summary>
-        internal static string Management {
+        internal static string UserCreate {
             get {
-                return ResourceManager.GetString("Management", resourceCulture);
+                return ResourceManager.GetString("UserCreate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alunos.
+        ///   Looks up a localized string similar to Eliminar Utilizador.
         /// </summary>
-        internal static string Students {
+        internal static string UserDelete {
             get {
-                return ResourceManager.GetString("Students", resourceCulture);
+                return ResourceManager.GetString("UserDelete", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Utilizadores.
+        ///   Looks up a localized string similar to Editar Utilizador.
         /// </summary>
-        internal static string Users {
+        internal static string UserEdit {
             get {
-                return ResourceManager.GetString("Users", resourceCulture);
+                return ResourceManager.GetString("UserEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lista de Utilizadores.
+        /// </summary>
+        internal static string UserList {
+            get {
+                return ResourceManager.GetString("UserList", resourceCulture);
             }
         }
     }

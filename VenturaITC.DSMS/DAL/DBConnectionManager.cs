@@ -12,7 +12,7 @@ namespace VenturaITC.DSMS.DAL
         {
             try
             {
-                return ConfigurationManager.ConnectionStrings["dsmsEntities"].ConnectionString;
+                return ConfigurationManager.ConnectionStrings["DSMSEntities"].ConnectionString;
             }
             catch (Exception ex)
             {

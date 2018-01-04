@@ -12,10 +12,10 @@ namespace VenturaITC.DSMS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class marital_status
+    public partial class status
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public marital_status()
+        public status()
         {
             this.students = new HashSet<student>();
         }

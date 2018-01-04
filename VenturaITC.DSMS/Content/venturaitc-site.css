@@ -3,10 +3,10 @@
  * http://venturaitc.co.mz
 */
 
-.site-title {
-    font-size: 30px;
+.fieldset-legend {
+    font-size: medium;
     font-weight: bold;
-    color: #B11d49;
+    color: #B11D49;
 }
 
 .site-company {

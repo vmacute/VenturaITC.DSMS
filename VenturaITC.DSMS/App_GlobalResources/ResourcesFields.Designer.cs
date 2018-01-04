@@ -61,6 +61,33 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grau Académico.
+        /// </summary>
+        public static string AcademicLevel {
+            get {
+                return ResourceManager.GetString("AcademicLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string AcademicLevelRequired {
+            get {
+                return ResourceManager.GetString("AcademicLevelRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Morada.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;&lt; Voltar a Lista.
         /// </summary>
         public static string BackToList {
@@ -70,11 +97,56 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data de Nascimento.
+        /// </summary>
+        public static string Birthdate {
+            get {
+                return ResourceManager.GetString("Birthdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string BirthdateRequired {
+            get {
+                return ResourceManager.GetString("BirthdateRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nº de Celular.
         /// </summary>
         public static string CellPhone {
             get {
                 return ResourceManager.GetString("CellPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nº Celular (Principal).
+        /// </summary>
+        public static string CellPhone1 {
+            get {
+                return ResourceManager.GetString("CellPhone1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string CellPhone1Required {
+            get {
+                return ResourceManager.GetString("CellPhone1Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nº Celular (Alternativo).
+        /// </summary>
+        public static string CellPhone2 {
+            get {
+                return ResourceManager.GetString("CellPhone2", resourceCulture);
             }
         }
         
@@ -153,9 +225,9 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to -Seleccionar-.
         /// </summary>
-        public static string DropdownDefaultSelectedText {
+        public static string DropdownOptionLabel {
             get {
-                return ResourceManager.GetString("DropdownDefaultSelectedText", resourceCulture);
+                return ResourceManager.GetString("DropdownOptionLabel", resourceCulture);
             }
         }
         
@@ -196,6 +268,24 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nomde do Pai.
+        /// </summary>
+        public static string FathersName {
+            get {
+                return ResourceManager.GetString("FathersName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string FathersNameRequired {
+            get {
+                return ResourceManager.GetString("FathersNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} longo. Deverá ter no máximo {1} caracteres..
         /// </summary>
         public static string FieldLong {
@@ -205,11 +295,137 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Primeiro Nome.
+        /// </summary>
+        public static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nome.
+        /// </summary>
+        public static string FullName {
+            get {
+                return ResourceManager.GetString("FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string FullNameRequired {
+            get {
+                return ResourceManager.GetString("FullNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sexo.
+        /// </summary>
+        public static string Gender {
+            get {
+                return ResourceManager.GetString("Gender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string GenderRequired {
+            get {
+                return ResourceManager.GetString("GenderRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Página Inicial.
         /// </summary>
         public static string HomePage {
             get {
                 return ResourceManager.GetString("HomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data de Expiração.
+        /// </summary>
+        public static string IDExpiryDate {
+            get {
+                return ResourceManager.GetString("IDExpiryDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string IDExpiryDateRequired {
+            get {
+                return ResourceManager.GetString("IDExpiryDateRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data de Emissão.
+        /// </summary>
+        public static string IDIssuanceDate {
+            get {
+                return ResourceManager.GetString("IDIssuanceDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string IDIssuanceDateRequired {
+            get {
+                return ResourceManager.GetString("IDIssuanceDateRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Local de Emissão.
+        /// </summary>
+        public static string IDIssuancePlace {
+            get {
+                return ResourceManager.GetString("IDIssuancePlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string IDIssuancePlaceRequired {
+            get {
+                return ResourceManager.GetString("IDIssuancePlaceRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nº de BI.
+        /// </summary>
+        public static string IDNumber {
+            get {
+                return ResourceManager.GetString("IDNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string IDNumberRequired {
+            get {
+                return ResourceManager.GetString("IDNumberRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profissão.
+        /// </summary>
+        public static string JobTitle {
+            get {
+                return ResourceManager.GetString("JobTitle", resourceCulture);
             }
         }
         
@@ -228,6 +444,15 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         public static string LastLogin {
             get {
                 return ResourceManager.GetString("LastLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Último Nome.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         
@@ -264,6 +489,42 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         public static string LoginAttempts {
             get {
                 return ResourceManager.GetString("LoginAttempts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estado Civil.
+        /// </summary>
+        public static string MaritalStatus {
+            get {
+                return ResourceManager.GetString("MaritalStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string MaritalStatusRequired {
+            get {
+                return ResourceManager.GetString("MaritalStatusRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nome da Mãe.
+        /// </summary>
+        public static string MothersName {
+            get {
+                return ResourceManager.GetString("MothersName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string MothersNameRequired {
+            get {
+                return ResourceManager.GetString("MothersNameRequired", resourceCulture);
             }
         }
         
@@ -358,11 +619,56 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nº de Telefone.
+        /// </summary>
+        public static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naturalidade.
+        /// </summary>
+        public static string PlaceOfBirth {
+            get {
+                return ResourceManager.GetString("PlaceOfBirth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string PlaceOfBirthRequired {
+            get {
+                return ResourceManager.GetString("PlaceOfBirthRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Português.
         /// </summary>
         public static string Portuguese {
             get {
                 return ResourceManager.GetString("Portuguese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Província.
+        /// </summary>
+        public static string ProvinceOfBirth {
+            get {
+                return ResourceManager.GetString("ProvinceOfBirth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string ProvinceOfBirthRequired {
+            get {
+                return ResourceManager.GetString("ProvinceOfBirthRequired", resourceCulture);
             }
         }
         
@@ -399,6 +705,51 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registo de Aluno.
+        /// </summary>
+        public static string StudentCreate {
+            get {
+                return ResourceManager.GetString("StudentCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Número.
+        /// </summary>
+        public static string StudentNumber {
+            get {
+                return ResourceManager.GetString("StudentNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string StudentNumberRequired {
+            get {
+                return ResourceManager.GetString("StudentNumberRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tipo.
+        /// </summary>
+        public static string StudentType {
+            get {
+                return ResourceManager.GetString("StudentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string StudentTypeRequired {
+            get {
+                return ResourceManager.GetString("StudentTypeRequired", resourceCulture);
             }
         }
         

@@ -249,7 +249,7 @@
   <data name="UserPasswordReset" xml:space="preserve">
     <value>ReiniciarSenha</value>
   </data>
-  <data name="DropdownDefaultSelectedText" xml:space="preserve">
+  <data name="DropdownOptionLabel" xml:space="preserve">
     <value>-Seleccionar-</value>
   </data>
   <data name="PasswordReset" xml:space="preserve">
@@ -257,5 +257,122 @@
   </data>
   <data name="Close" xml:space="preserve">
     <value>Fechar</value>
+  </data>
+  <data name="StudentCreate" xml:space="preserve">
+    <value>Registo de Aluno</value>
+  </data>
+  <data name="AcademicLevel" xml:space="preserve">
+    <value>Grau Académico</value>
+  </data>
+  <data name="AcademicLevelRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Morada</value>
+  </data>
+  <data name="Birthdate" xml:space="preserve">
+    <value>Data de Nascimento</value>
+  </data>
+  <data name="BirthdateRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="CellPhone1" xml:space="preserve">
+    <value>Nº Celular (Principal)</value>
+  </data>
+  <data name="CellPhone1Required" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="CellPhone2" xml:space="preserve">
+    <value>Nº Celular (Alternativo)</value>
+  </data>
+  <data name="FathersName" xml:space="preserve">
+    <value>Nomde do Pai</value>
+  </data>
+  <data name="FathersNameRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Primeiro Nome</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="FullNameRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Sexo</value>
+  </data>
+  <data name="GenderRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="IDExpiryDate" xml:space="preserve">
+    <value>Data de Expiração</value>
+  </data>
+  <data name="IDExpiryDateRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="IDIssuanceDate" xml:space="preserve">
+    <value>Data de Emissão</value>
+  </data>
+  <data name="IDIssuanceDateRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="IDIssuancePlace" xml:space="preserve">
+    <value>Local de Emissão</value>
+  </data>
+  <data name="IDIssuancePlaceRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="IDNumber" xml:space="preserve">
+    <value>Nº de BI</value>
+  </data>
+  <data name="IDNumberRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>Profissão</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Último Nome</value>
+  </data>
+  <data name="MaritalStatus" xml:space="preserve">
+    <value>Estado Civil</value>
+  </data>
+  <data name="MaritalStatusRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="MothersName" xml:space="preserve">
+    <value>Nome da Mãe</value>
+  </data>
+  <data name="MothersNameRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Nº de Telefone</value>
+  </data>
+  <data name="PlaceOfBirth" xml:space="preserve">
+    <value>Naturalidade</value>
+  </data>
+  <data name="PlaceOfBirthRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="ProvinceOfBirth" xml:space="preserve">
+    <value>Província</value>
+  </data>
+  <data name="ProvinceOfBirthRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="StudentNumber" xml:space="preserve">
+    <value>Número</value>
+  </data>
+  <data name="StudentNumberRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="StudentType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="StudentTypeRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
   </data>
 </root>

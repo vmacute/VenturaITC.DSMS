@@ -127,6 +127,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\ResourcesButtons.designer.cs">
+      <DependentUpon>ResourcesButtons.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\ResourcesTitles.en.designer.cs">
+      <DependentUpon>ResourcesTitles.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\ResourcesTitles.designer.cs">
+      <DependentUpon>ResourcesTitles.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="App_GlobalResources\ResourcesMenus.en.designer.cs">
       <DependentUpon>ResourcesMenus.en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -188,6 +205,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CultureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DAL\DBConnectionManager.cs" />
     <Compile Include="DAL\EntityDBUtils.cs" />
@@ -255,6 +273,9 @@
     <Compile Include="Models\province.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\status.cs">
+      <DependentUpon>dsmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\student.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
@@ -268,6 +289,9 @@
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\student_type.cs">
+      <DependentUpon>dsmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\user.cs">
@@ -364,6 +388,21 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\_ResetUserPassword.cshtml" />
+    <Content Include="Views\Students-old\Create.cshtml" />
+    <Content Include="Views\Students-old\Delete.cshtml" />
+    <Content Include="Views\Students-old\Details.cshtml" />
+    <Content Include="Views\Students-old\Edit.cshtml" />
+    <Content Include="Views\Students-old\Index.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\students1\Create.cshtml" />
+    <Content Include="Views\students1\Delete.cshtml" />
+    <Content Include="Views\students1\Details.cshtml" />
+    <Content Include="Views\students1\Edit.cshtml" />
+    <Content Include="Views\students1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -398,6 +437,16 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>ResourcesMenus.en.designer.cs</LastGenOutput>
     </Content>
+    <Content Include="App_GlobalResources\ResourcesTitles.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ResourcesTitles.designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_GlobalResources\ResourcesTitles.en.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ResourcesTitles.en.designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="App_GlobalResources\ResourcesFields.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesFields.en.designer.cs</LastGenOutput>
@@ -431,6 +480,10 @@
     <Content Include="App_GlobalResources\ResourcesMsgsSuccess.en.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>ResourcesMsgsSuccess.en.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ResourcesButtons.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ResourcesButtons.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>

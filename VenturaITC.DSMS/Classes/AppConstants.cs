@@ -26,7 +26,7 @@ namespace VenturaITC.DSMS.Classes
         /// </summary>
         public struct ConnectionString
         {
-            public const string DSMS_ENTITY = "dsmsEntities";
+            public const string DSMS_ENTITY = "DSMSEntities";
         }
 
         /// <summary>

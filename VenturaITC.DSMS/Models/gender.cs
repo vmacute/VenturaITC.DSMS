@@ -14,7 +14,16 @@ namespace VenturaITC.DSMS.Models
     
     public partial class gender
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public gender()
+        {
+            this.students = new HashSet<student>();
+        }
+    
+        public int id { get; set; }
         public string name { get; set; }
-        public string description { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<student> students { get; set; }
     }
 }

@@ -22,14 +22,14 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "14.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ResourcesMenus {
+    internal class ResourcesButtons {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourcesMenus() {
+        internal ResourcesButtons() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.ResourcesMenus", global::System.Reflection.Assembly.Load("App_GlobalResources"));
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.ResourcesButtons", global::System.Reflection.Assembly.Load("App_GlobalResources"));
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,47 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Criar Novo.
+        ///   Looks up a localized string similar to Voltar à Lista.
         /// </summary>
-        internal static string CreateNew {
+        internal static string BackToList {
             get {
-                return ResourceManager.GetString("CreateNew", resourceCulture);
+                return ResourceManager.GetString("BackToList", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Início.
+        ///   Looks up a localized string similar to Criar.
         /// </summary>
-        internal static string Home {
+        internal static string Create {
             get {
-                return ResourceManager.GetString("Home", resourceCulture);
+                return ResourceManager.GetString("Create", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gestão.
+        ///   Looks up a localized string similar to Eliminar.
         /// </summary>
-        internal static string Management {
+        internal static string Delete {
             get {
-                return ResourceManager.GetString("Management", resourceCulture);
+                return ResourceManager.GetString("Delete", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alunos.
+        ///   Looks up a localized string similar to Editar.
         /// </summary>
-        internal static string Students {
+        internal static string Edit {
             get {
-                return ResourceManager.GetString("Students", resourceCulture);
+                return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Utilizadores.
+        ///   Looks up a localized string similar to Gravar.
         /// </summary>
-        internal static string Users {
+        internal static string Save {
             get {
-                return ResourceManager.GetString("Users", resourceCulture);
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
     }

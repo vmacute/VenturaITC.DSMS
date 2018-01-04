@@ -23,33 +23,37 @@ namespace VenturaITC.DSMS.Models
         }
     
         public int number { get; set; }
-        public string type { get; set; }
-        public string type_description { get; set; }
+        public int student_type_id { get; set; }
         public string full_name { get; set; }
         public string first_name { get; set; }
         public string last_name { get; set; }
         public System.DateTime birth_date { get; set; }
-        public string marital_status { get; set; }
-        public string marital_status_description { get; set; }
-        public string gender { get; set; }
-        public string gender_description { get; set; }
+        public int marital_status_id { get; set; }
+        public int gender_id { get; set; }
         public string place_of_birth { get; set; }
-        public string province_of_birth { get; set; }
+        public int province_of_birth_id { get; set; }
         public string fathers_name { get; set; }
         public string mothers_name { get; set; }
         public string address { get; set; }
-        public string ID_number { get; set; }
-        public string ID_issuance_place { get; set; }
-        public System.DateTime ID_issuance_date { get; set; }
-        public System.DateTime ID_expiry_date { get; set; }
-        public string academic_level { get; set; }
+        public string id_number { get; set; }
+        public int id_issuance_place { get; set; }
+        public System.DateTime id_issuance_date { get; set; }
+        public System.DateTime id_expiry_date { get; set; }
+        public int academic_level_id { get; set; }
         public string job_title { get; set; }
         public string phone_number { get; set; }
         public string cell_phone1 { get; set; }
         public string cell_phone2 { get; set; }
         public string email { get; set; }
-        public string status { get; set; }
+        public int status_id { get; set; }
     
+        public virtual academic_level academic_level { get; set; }
+        public virtual gender gender { get; set; }
+        public virtual marital_status marital_status { get; set; }
+        public virtual province province { get; set; }
+        public virtual province province1 { get; set; }
+        public virtual status status { get; set; }
+        public virtual student_type student_type { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<student_documentation> student_documentation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

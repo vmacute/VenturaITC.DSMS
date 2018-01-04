@@ -44,6 +44,5 @@ namespace VenturaITC.DSMS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<student_payment> student_payment { get; set; }
         public virtual user_role user_role { get; set; }
-
     }
 }
