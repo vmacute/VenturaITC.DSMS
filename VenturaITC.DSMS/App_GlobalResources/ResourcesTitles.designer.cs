@@ -61,11 +61,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registo de Aluno.
+        ///   Looks up a localized string similar to Tipo de Carta e Pagamento.
         /// </summary>
-        internal static string StudentCreate {
+        internal static string CategoryAndPayment {
             get {
-                return ResourceManager.GetString("StudentCreate", resourceCulture);
+                return ResourceManager.GetString("CategoryAndPayment", resourceCulture);
             }
         }
         
@@ -75,6 +75,15 @@ namespace Resources {
         internal static string StudentData {
             get {
                 return ResourceManager.GetString("StudentData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inscrição de Aluno.
+        /// </summary>
+        internal static string StudentEnrollment {
+            get {
+                return ResourceManager.GetString("StudentEnrollment", resourceCulture);
             }
         }
         

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using VenturaITC.DSMS.Models;
+using VenturaITC.DSMS.ViewModels;
 
 namespace VenturaITC.DSMS.Controllers
 {
@@ -46,6 +47,10 @@ namespace VenturaITC.DSMS.Controllers
             ViewBag.student_type_id = new SelectList(db.student_type, "id", "name");
             ViewBag.gender_id = new SelectList(db.genders, "id", "name");
             ViewBag.id_issuance_place = new SelectList(db.provinces, "id", "name");
+
+            //For enrollment data
+            ViewBag.category_id = new SelectList(db.categories, "id", "name");
+            ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name");
             return View();
         }
 
@@ -54,15 +59,15 @@ namespace VenturaITC.DSMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "number,student_type_id,full_name,first_name,last_name,birth_date,marital_status_id,gender_id,place_of_birth,province_of_birth_id,fathers_name,mothers_name,address,id_number,id_issuance_place,id_issuance_date,id_expiry_date,academic_level_id,job_title,phone_number,cell_phone1,cell_phone2,email,status_id")] student student)
+        public ActionResult Create(StudentEnrolmentViewModel student)
         {
-            if (ModelState.IsValid)
-            {
-                db.students.Add(student);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            InitializeDropdowns(student);
+            //if (ModelState.IsValid)
+            //{
+            //    db.students.Add(student);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+            //InitializeDropdowns(student);
 
             return View(student);
         }
@@ -75,11 +80,11 @@ namespace VenturaITC.DSMS.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             student student = db.students.Find(id);
-            if (student == null)
-            {
-                return HttpNotFound();
-            }
-            InitializeDropdowns(student);
+            //if (student == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //InitializeDropdowns(student);
             return View(student);
         }
 
@@ -96,7 +101,7 @@ namespace VenturaITC.DSMS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            InitializeDropdowns(student);
+          //  InitializeDropdowns(student);
             return View(student);
         }
 
@@ -135,7 +140,7 @@ namespace VenturaITC.DSMS.Controllers
             base.Dispose(disposing);
         }
 
-        private void InitializeDropdowns(student student)
+        private void InitializeDropdowns(StudentEnrolmentViewModel student)
         {
             ViewBag.academic_level_id = new SelectList(db.academic_level, "id", "name", student.academic_level_id);
             ViewBag.marital_status_id = new SelectList(db.marital_status, "id", "name", student.marital_status_id);
@@ -144,6 +149,10 @@ namespace VenturaITC.DSMS.Controllers
             ViewBag.student_type_id = new SelectList(db.student_type, "id", "name", student.student_type_id);
             ViewBag.gender_id = new SelectList(db.genders, "id", "name", student.gender_id);
             ViewBag.id_issuance_place = new SelectList(db.provinces, "id", "name", student.id_issuance_place);
+
+            //For enrollment data
+            ViewBag.category_id = new SelectList(db.categories, "id", "name", student.category_id);
+            ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name", student.payment_type_id);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model VenturaITC.DSMS.Models.student
+﻿@model VenturaITC.DSMS.ViewModels.StudentEnrolmentViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -40,7 +40,7 @@
                     <div class="form-group required">
                         @Html.LabelFor(model => model.birth_date, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.EditorFor(model => model.birth_date, new { htmlAttributes = new { @class = "form-control"} })
+                            @Html.EditorFor(model => model.birth_date, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.birth_date, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.TextAreaFor(model => model.address, new { htmlAttributes = new { @class = "form-control" }, cols = "50"})
+                            @Html.TextAreaFor(model => model.address, new { htmlAttributes = new { @class = "form-control" }, cols = "50" })
                             @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.id_issuance_place, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.DropDownListFor(model=>model.id_issuance_place, null, @Resources.ResourcesFields.DropdownOptionLabel,htmlAttributes: new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.id_issuance_place, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.id_issuance_place, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -219,19 +219,72 @@
                 </div>
             </div>
 
-            @*<div class="row">
-                    <div class="col-md-6">
-                    </div>
-                    <div class="col-md-6">
+        </fieldset>
+        <br />
+
+        <fieldset>
+            <legend class="fieldset-legend">@Resources.ResourcesTitles.CategoryAndPayment</legend>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.category.name, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(model => model.category_id, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.category_id, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.totalAmount, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.totalAmount, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.payment_type.name, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(model => model.payment_type_id, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.payment_type_id, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>*@
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.minimumAmount, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.minimumAmount, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group required">
+                        @Html.LabelFor(model => model.amountToPay, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.amountToPay, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.amountToPay, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group required">
+                        @Html.LabelFor(model => model.payment_id, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.payment_id, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.payment_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
         </fieldset>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-8">
                 <input type="submit" value="@Resources.ResourcesButtons.Create" class="btn btn-primary" />

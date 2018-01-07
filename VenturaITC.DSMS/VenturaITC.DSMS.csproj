@@ -204,6 +204,7 @@
     <Compile Include="Classes\Validator.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CultureController.cs" />
+    <Compile Include="Controllers\enrollmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -241,6 +242,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsmsModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\enrollment.cs">
+      <DependentUpon>dsmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\gender.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
@@ -248,6 +252,9 @@
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\id_issuance_place.cs">
+      <DependentUpon>dsmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\installment.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\marital_status.cs">
@@ -261,6 +268,9 @@
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PartialClasses.cs" />
+    <Compile Include="Models\payment.cs">
+      <DependentUpon>dsmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\payment_installment.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
@@ -310,6 +320,7 @@
     <Compile Include="Utils\SecurityUtils.cs" />
     <Compile Include="Utils\StringUtils.cs" />
     <Compile Include="Utils\UserUtils.cs" />
+    <Compile Include="ViewModels\StudentEnrolmentViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -376,6 +387,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\venturaitc-alert.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Utils\ToDelete.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -413,6 +425,11 @@
     <Content Include="Views\students1\Details.cshtml" />
     <Content Include="Views\students1\Edit.cshtml" />
     <Content Include="Views\students1\Index.cshtml" />
+    <Content Include="Views\enrollments\Create.cshtml" />
+    <Content Include="Views\enrollments\Delete.cshtml" />
+    <Content Include="Views\enrollments\Details.cshtml" />
+    <Content Include="Views\enrollments\Edit.cshtml" />
+    <Content Include="Views\enrollments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

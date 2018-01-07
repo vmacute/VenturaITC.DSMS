@@ -375,10 +375,40 @@
   <data name="StudentTypeRequired" xml:space="preserve">
     <value>O campo {0} é de preenchimento obrigatório.</value>
   </data>
+  <data name="AmountToPay" xml:space="preserve">
+    <value>Valor a Pagar</value>
+  </data>
+  <data name="AmountToPayRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="CategoryRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
   <data name="IDNumberMalformed" xml:space="preserve">
     <value>{0} inválido!</value>
   </data>
+  <data name="MinimumAmount" xml:space="preserve">
+    <value>Valor Mínimo</value>
+  </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>Tipo de Pagamento</value>
+  </data>
+  <data name="PaymentTypeRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
   <data name="PhoneMalformed" xml:space="preserve">
     <value>{0}  inválido! Exemplo de número válido: 21654321</value>
+  </data>
+  <data name="ReceiptNumber" xml:space="preserve">
+    <value>Nº do Recibo</value>
+  </data>
+  <data name="ReceiptNumberRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Valor Total</value>
   </data>
 </root>

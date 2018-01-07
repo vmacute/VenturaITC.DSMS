@@ -88,6 +88,24 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Valor a Pagar.
+        /// </summary>
+        public static string AmountToPay {
+            get {
+                return ResourceManager.GetString("AmountToPay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string AmountToPayRequired {
+            get {
+                return ResourceManager.GetString("AmountToPayRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;&lt; Voltar a Lista.
         /// </summary>
         public static string BackToList {
@@ -111,6 +129,24 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         public static string BirthdateRequired {
             get {
                 return ResourceManager.GetString("BirthdateRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categoria.
+        /// </summary>
+        public static string Category {
+            get {
+                return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string CategoryRequired {
+            get {
+                return ResourceManager.GetString("CategoryRequired", resourceCulture);
             }
         }
         
@@ -520,6 +556,15 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Valor Mínimo.
+        /// </summary>
+        public static string MinimumAmount {
+            get {
+                return ResourceManager.GetString("MinimumAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nome da Mãe.
         /// </summary>
         public static string MothersName {
@@ -628,6 +673,24 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tipo de Pagamento.
+        /// </summary>
+        public static string PaymentType {
+            get {
+                return ResourceManager.GetString("PaymentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string PaymentTypeRequired {
+            get {
+                return ResourceManager.GetString("PaymentTypeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0}  inválido! Exemplo de número válido: 21654321.
         /// </summary>
         public static string PhoneMalformed {
@@ -687,6 +750,24 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         public static string ProvinceOfBirthRequired {
             get {
                 return ResourceManager.GetString("ProvinceOfBirthRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nº do Recibo.
+        /// </summary>
+        public static string ReceiptNumber {
+            get {
+                return ResourceManager.GetString("ReceiptNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string ReceiptNumberRequired {
+            get {
+                return ResourceManager.GetString("ReceiptNumberRequired", resourceCulture);
             }
         }
         
@@ -768,6 +849,15 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         public static string StudentTypeRequired {
             get {
                 return ResourceManager.GetString("StudentTypeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valor Total.
+        /// </summary>
+        public static string TotalAmount {
+            get {
+                return ResourceManager.GetString("TotalAmount", resourceCulture);
             }
         }
         

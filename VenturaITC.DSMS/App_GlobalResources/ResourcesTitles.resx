@@ -129,10 +129,13 @@
   <data name="UserList" xml:space="preserve">
     <value>Lista de Utilizadores</value>
   </data>
-  <data name="StudentCreate" xml:space="preserve">
-    <value>Registo de Aluno</value>
+  <data name="StudentEnrollment" xml:space="preserve">
+    <value>Inscrição de Aluno</value>
   </data>
   <data name="StudentData" xml:space="preserve">
     <value>Dados do Aluno</value>
+  </data>
+  <data name="CategoryAndPayment" xml:space="preserve">
+    <value>Tipo de Carta e Pagamento</value>
   </data>
 </root>

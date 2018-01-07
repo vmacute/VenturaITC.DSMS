@@ -12,15 +12,18 @@ namespace VenturaITC.DSMS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class payment_installment
+    public partial class installment
     {
-        public int id { get; set; }
-        public Nullable<int> enrollment_id { get; set; }
-        public Nullable<int> installment_id { get; set; }
-        public Nullable<int> payment_id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public installment()
+        {
+            this.payment_installment = new HashSet<payment_installment>();
+        }
     
-        public virtual enrollment enrollment { get; set; }
-        public virtual installment installment { get; set; }
-        public virtual payment payment { get; set; }
+        public int id { get; set; }
+        public decimal percentage { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<payment_installment> payment_installment { get; set; }
     }
 }

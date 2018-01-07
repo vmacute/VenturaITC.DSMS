@@ -29,12 +29,15 @@ namespace VenturaITC.DSMS.Models
         public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<db_data_status> db_data_status { get; set; }
         public virtual DbSet<document_type> document_type { get; set; }
+        public virtual DbSet<enrollment> enrollments { get; set; }
         public virtual DbSet<gender> genders { get; set; }
         public virtual DbSet<holiday> holidays { get; set; }
         public virtual DbSet<id_issuance_place> id_issuance_place { get; set; }
+        public virtual DbSet<installment> installments { get; set; }
         public virtual DbSet<marital_status> marital_status { get; set; }
         public virtual DbSet<parameterization> parameterizations { get; set; }
         public virtual DbSet<parameterization_bool> parameterization_bool { get; set; }
+        public virtual DbSet<payment> payments { get; set; }
         public virtual DbSet<payment_installment> payment_installment { get; set; }
         public virtual DbSet<payment_status> payment_status { get; set; }
         public virtual DbSet<payment_type> payment_type { get; set; }

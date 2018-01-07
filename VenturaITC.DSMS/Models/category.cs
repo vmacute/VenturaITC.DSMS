@@ -14,8 +14,17 @@ namespace VenturaITC.DSMS.Models
     
     public partial class category
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public category()
+        {
+            this.enrollments = new HashSet<enrollment>();
+        }
+    
         public int id { get; set; }
         public string name { get; set; }
         public decimal cost { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<enrollment> enrollments { get; set; }
     }
 }

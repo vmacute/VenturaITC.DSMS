@@ -24,6 +24,5 @@ namespace VenturaITC.DSMS.Models
         public System.DateTime date { get; set; }
     
         public virtual student student { get; set; }
-        public virtual user user { get; set; }
     }
 }

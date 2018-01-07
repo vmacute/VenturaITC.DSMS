@@ -17,12 +17,13 @@ namespace VenturaITC.DSMS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public student()
         {
+            this.enrollments = new HashSet<enrollment>();
             this.student_documentation = new HashSet<student_documentation>();
             this.student_payment = new HashSet<student_payment>();
             this.student_enrollment = new HashSet<student_enrollment>();
         }
     
-        public int number { get; set; }
+        public int id { get; set; }
         public int student_type_id { get; set; }
         public string full_name { get; set; }
         public string first_name { get; set; }
@@ -48,6 +49,8 @@ namespace VenturaITC.DSMS.Models
         public int status_id { get; set; }
     
         public virtual academic_level academic_level { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<enrollment> enrollments { get; set; }
         public virtual gender gender { get; set; }
         public virtual marital_status marital_status { get; set; }
         public virtual province province { get; set; }

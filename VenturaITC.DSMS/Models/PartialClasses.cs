@@ -26,12 +26,6 @@ namespace VenturaITC.DSMS.Models
     {
     }
 
-    [MetadataType(typeof(StudentMetadata))]
-    public partial class student
-    {
-
-    }
-
     [MetadataType(typeof(StudentTypeMetadata))]
     public partial class student_type
     {
@@ -63,6 +57,19 @@ namespace VenturaITC.DSMS.Models
 
     [MetadataType(typeof(StatusMetadata))]
     public partial class status
+    {
+
+    }
+
+    [MetadataType(typeof(CategoryMetadata))]
+    public partial class category
+    {
+
+    }
+
+
+    [MetadataType(typeof(PaymentTypeMetadata))]
+    public partial class payment_type
     {
 
     }

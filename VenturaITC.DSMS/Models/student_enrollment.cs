@@ -21,6 +21,5 @@ namespace VenturaITC.DSMS.Models
         public string enrollment_user { get; set; }
     
         public virtual student student { get; set; }
-        public virtual user user { get; set; }
     }
 }

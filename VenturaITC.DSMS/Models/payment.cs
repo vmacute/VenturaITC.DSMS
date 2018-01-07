@@ -12,35 +12,22 @@ namespace VenturaITC.DSMS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class user
+    public partial class payment
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public user()
+        public payment()
         {
             this.enrollments = new HashSet<enrollment>();
+            this.payment_installment = new HashSet<payment_installment>();
         }
     
         public int id { get; set; }
-        public string username { get; set; }
-        public string full_name { get; set; }
-        public string cell_phone { get; set; }
-        public string email { get; set; }
-        public string role { get; set; }
-        public bool locked { get; set; }
-        public bool disabled { get; set; }
-        public byte[] password { get; set; }
-        public bool must_change_password { get; set; }
-        public Nullable<System.DateTime> last_password_change { get; set; }
-        public bool logged { get; set; }
-        public Nullable<System.DateTime> last_login { get; set; }
-        public int current_login_attempts { get; set; }
-        public System.DateTime registration_date { get; set; }
-        public string registration_user { get; set; }
-        public string status { get; set; }
+        public decimal amount { get; set; }
+        public System.DateTime date { get; set; }
     
-        public virtual db_data_status db_data_status { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<enrollment> enrollments { get; set; }
-        public virtual user_role user_role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<payment_installment> payment_installment { get; set; }
     }
 }
