@@ -71,7 +71,6 @@ namespace VenturaITC.DSMS.Models
     [MetadataType(typeof(PaymentTypeMetadata))]
     public partial class payment_type
     {
-
     }
 
 }
