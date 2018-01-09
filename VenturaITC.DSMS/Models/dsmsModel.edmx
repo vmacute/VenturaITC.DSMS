@@ -33,6 +33,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="max_size_mb" Type="int" Nullable="false" />
           <Property Name="file_name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="enrollment">
@@ -175,8 +176,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="student_number" Type="int" Nullable="false" />
-          <Property Name="document_type" Type="int" Nullable="false" />
+          <Property Name="student_id" Type="int" Nullable="false" />
+          <Property Name="document_type_id" Type="int" Nullable="false" />
           <Property Name="document_content" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="student_enrollment">
@@ -436,7 +437,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="student_documentation">
-              <PropertyRef Name="document_type" />
+              <PropertyRef Name="document_type_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -448,7 +449,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="student_documentation">
-              <PropertyRef Name="student_number" />
+              <PropertyRef Name="student_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -759,6 +760,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="max_size_mb" Type="Int32" Nullable="false" />
           <Property Name="file_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="student_documentation" Relationship="dsmsModel.FK_StudentDocumentation_DocumentType" FromRole="document_type" ToRole="student_documentation" />
         </EntityType>
@@ -931,10 +933,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="student_number" Type="Int32" Nullable="false" />
-          <Property Name="document_type" Type="Int32" Nullable="false" />
+          <Property Name="student_id" Type="Int32" Nullable="false" />
+          <Property Name="document_type_id" Type="Int32" Nullable="false" />
           <Property Name="document_content" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="document_type1" Relationship="dsmsModel.FK_StudentDocumentation_DocumentType" FromRole="student_documentation" ToRole="document_type" />
+          <NavigationProperty Name="document_type" Relationship="dsmsModel.FK_StudentDocumentation_DocumentType" FromRole="student_documentation" ToRole="document_type" />
           <NavigationProperty Name="student" Relationship="dsmsModel.FK_StudentDocumentation_Student" FromRole="student_documentation" ToRole="student" />
         </EntityType>
         <EntityType Name="student_enrollment">
@@ -1057,7 +1059,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="student_documentation">
-              <PropertyRef Name="document_type" />
+              <PropertyRef Name="document_type_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1225,7 +1227,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="student_documentation">
-              <PropertyRef Name="student_number" />
+              <PropertyRef Name="student_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1300,6 +1302,7 @@
             <EntityTypeMapping TypeName="dsmsModel.document_type">
               <MappingFragment StoreEntitySet="document_type">
                 <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="max_size_mb" ColumnName="max_size_mb" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -1458,8 +1461,8 @@
             <EntityTypeMapping TypeName="dsmsModel.student_documentation">
               <MappingFragment StoreEntitySet="student_documentation">
                 <ScalarProperty Name="document_content" ColumnName="document_content" />
-                <ScalarProperty Name="document_type" ColumnName="document_type" />
-                <ScalarProperty Name="student_number" ColumnName="student_number" />
+                <ScalarProperty Name="document_type_id" ColumnName="document_type_id" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

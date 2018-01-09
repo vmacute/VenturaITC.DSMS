@@ -112,5 +112,27 @@ namespace VenturaITC.DSMS.ViewModels
         public virtual category category { get; set; }
         public virtual payment_type payment_type { get; set; }
         #endregion
+
+        #region Documents
+        [Display(Name = "Picture", ResourceType = typeof(ResourcesFields))]
+        [RegularExpression(@".*\.([jJ][pP][gG]|[jJ][pP][eE][gG]|[pP][nN][gG])$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PictureInvalidFormat")]
+        public HttpPostedFileBase picture { get; set; }
+
+        [Display(Name = "IDCopy", ResourceType = typeof(ResourcesFields))]
+        [RegularExpression(@".*\.([pP][dD][fFG])$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PDFInvalidFormat")]
+        public HttpPostedFileBase IDCopy { get; set; }
+
+        [Display(Name = "CriminalRecordCertificate", ResourceType = typeof(ResourcesFields))]
+        [RegularExpression(@".*\.([pP][dD][fFG])$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PDFInvalidFormat")]
+        public HttpPostedFileBase criminalRecordCertificate { get; set; }
+
+        [Display(Name = "MedicalCertificate", ResourceType = typeof(ResourcesFields))]
+        [RegularExpression(@".*\.([pP][dD][fFG])$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PDFInvalidFormat")]
+        public HttpPostedFileBase medicalCertificate { get; set; }
+
+        [Display(Name = "MilitaryServiceStatement", ResourceType = typeof(ResourcesFields))]
+        [RegularExpression(@".*\.([pP][dD][fFG])$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PDFInvalidFormat")]
+        public HttpPostedFileBase militaryServiceStatement { get; set; }
+        #endregion
     }
 }

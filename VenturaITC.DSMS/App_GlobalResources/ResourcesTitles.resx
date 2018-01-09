@@ -138,4 +138,7 @@
   <data name="CategoryAndPayment" xml:space="preserve">
     <value>Tipo de Carta e Pagamento</value>
   </data>
+  <data name="Documents" xml:space="preserve">
+    <value>Documentos</value>
+  </data>
 </root>

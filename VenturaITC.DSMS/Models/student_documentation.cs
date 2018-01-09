@@ -15,11 +15,11 @@ namespace VenturaITC.DSMS.Models
     public partial class student_documentation
     {
         public int id { get; set; }
-        public int student_number { get; set; }
-        public int document_type { get; set; }
+        public int student_id { get; set; }
+        public int document_type_id { get; set; }
         public byte[] document_content { get; set; }
     
-        public virtual document_type document_type1 { get; set; }
+        public virtual document_type document_type { get; set; }
         public virtual student student { get; set; }
     }
 }

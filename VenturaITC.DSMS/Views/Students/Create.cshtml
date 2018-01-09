@@ -284,12 +284,71 @@
                 </div>
             </div>
         </fieldset>
+        <br />
+        <fieldset>
+            <legend class="fieldset-legend">@Resources.ResourcesTitles.Documents</legend>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.picture, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.picture, new { @class = "form-control", type = "file" })
+                            @Html.ValidationMessageFor(model => model.picture, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IDCopy, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.IDCopy, new { @class = "form-control", type = "file" })
+                            @Html.ValidationMessageFor(model => model.IDCopy, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.criminalRecordCertificate, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.criminalRecordCertificate, new { @class = "form-control", type = "file" })
+                            @Html.ValidationMessageFor(model => model.criminalRecordCertificate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.medicalCertificate, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.medicalCertificate, new { @class = "form-control", type = "file" })
+                            @Html.ValidationMessageFor(model => model.medicalCertificate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.militaryServiceStatement, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.militaryServiceStatement, new { @class = "form-control", type = "file" })
+                            @Html.ValidationMessageFor(model => model.militaryServiceStatement, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </fieldset>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-8">
                 <input type="submit" value="@Resources.ResourcesButtons.Create" class="btn btn-primary" />
             </div>
         </div>
+
     </div>
 }
 

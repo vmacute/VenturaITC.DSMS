@@ -411,4 +411,25 @@
   <data name="TotalAmount" xml:space="preserve">
     <value>Valor Total</value>
   </data>
+  <data name="CriminalRecordCertificate" xml:space="preserve">
+    <value>Registo Criminal</value>
+  </data>
+  <data name="IDCopy" xml:space="preserve">
+    <value>Cópia de BI</value>
+  </data>
+  <data name="MedicalCertificate" xml:space="preserve">
+    <value>Atestado Médico</value>
+  </data>
+  <data name="MilitaryServiceStatement" xml:space="preserve">
+    <value>Declaração de Serviço Militar</value>
+  </data>
+  <data name="PDFInvalidFormat" xml:space="preserve">
+    <value>Formato inválido! Formato permitido: pdf.</value>
+  </data>
+  <data name="Picture" xml:space="preserve">
+    <value>Fotografia</value>
+  </data>
+  <data name="PictureInvalidFormat" xml:space="preserve">
+    <value>Formato inválido! Formatos permitidos: jpg, jpeg e png.</value>
+  </data>
 </root>

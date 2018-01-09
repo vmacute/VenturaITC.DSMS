@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inscrição.
+        /// </summary>
+        internal static string Enrollment {
+            get {
+                return ResourceManager.GetString("Enrollment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Início.
         /// </summary>
         internal static string Home {

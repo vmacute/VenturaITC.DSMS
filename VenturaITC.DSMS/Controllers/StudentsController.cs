@@ -61,13 +61,14 @@ namespace VenturaITC.DSMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(StudentEnrolmentViewModel student)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    db.students.Add(student);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-            //InitializeDropdowns(student);
+            if (ModelState.IsValid)
+            {
+                //db.students.Add(student);
+                //db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            InitializeDropdowns(student);
 
             return View(student);
         }

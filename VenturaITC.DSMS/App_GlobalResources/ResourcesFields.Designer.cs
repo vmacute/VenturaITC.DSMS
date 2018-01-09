@@ -223,6 +223,15 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Registo Criminal.
+        /// </summary>
+        public static string CriminalRecordCertificate {
+            get {
+                return ResourceManager.GetString("CriminalRecordCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Eliminar.
         /// </summary>
         public static string Delete {
@@ -381,6 +390,15 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         public static string HomePage {
             get {
                 return ResourceManager.GetString("HomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cópia de BI.
+        /// </summary>
+        public static string IDCopy {
+            get {
+                return ResourceManager.GetString("IDCopy", resourceCulture);
             }
         }
         
@@ -556,6 +574,24 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Atestado Médico.
+        /// </summary>
+        public static string MedicalCertificate {
+            get {
+                return ResourceManager.GetString("MedicalCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Declaração de Serviço Militar.
+        /// </summary>
+        public static string MilitaryServiceStatement {
+            get {
+                return ResourceManager.GetString("MilitaryServiceStatement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Valor Mínimo.
         /// </summary>
         public static string MinimumAmount {
@@ -691,6 +727,15 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Formato inválido! Formato permitido: pdf..
+        /// </summary>
+        public static string PDFInvalidFormat {
+            get {
+                return ResourceManager.GetString("PDFInvalidFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0}  inválido! Exemplo de número válido: 21654321.
         /// </summary>
         public static string PhoneMalformed {
@@ -705,6 +750,24 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         public static string PhoneNumber {
             get {
                 return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fotografia.
+        /// </summary>
+        public static string Picture {
+            get {
+                return ResourceManager.GetString("Picture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Formato inválido! Formatos permitidos: jpg, jpeg e png..
+        /// </summary>
+        public static string PictureInvalidFormat {
+            get {
+                return ResourceManager.GetString("PictureInvalidFormat", resourceCulture);
             }
         }
         
