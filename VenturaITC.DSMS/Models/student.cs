@@ -17,8 +17,9 @@ namespace VenturaITC.DSMS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public student()
         {
+            this.documents = new HashSet<document>();
+            this.documents1 = new HashSet<document>();
             this.enrollments = new HashSet<enrollment>();
-            this.student_documentation = new HashSet<student_documentation>();
             this.student_payment = new HashSet<student_payment>();
             this.student_enrollment = new HashSet<student_enrollment>();
         }
@@ -26,8 +27,6 @@ namespace VenturaITC.DSMS.Models
         public int id { get; set; }
         public int student_type_id { get; set; }
         public string full_name { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
         public System.DateTime birth_date { get; set; }
         public int marital_status_id { get; set; }
         public int gender_id { get; set; }
@@ -50,6 +49,10 @@ namespace VenturaITC.DSMS.Models
     
         public virtual academic_level academic_level { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<document> documents { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<document> documents1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<enrollment> enrollments { get; set; }
         public virtual gender gender { get; set; }
         public virtual marital_status marital_status { get; set; }
@@ -57,8 +60,6 @@ namespace VenturaITC.DSMS.Models
         public virtual province province1 { get; set; }
         public virtual status status { get; set; }
         public virtual student_type student_type { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student_documentation> student_documentation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<student_payment> student_payment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

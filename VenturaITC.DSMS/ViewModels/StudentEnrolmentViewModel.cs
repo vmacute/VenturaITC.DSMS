@@ -43,7 +43,7 @@ namespace VenturaITC.DSMS.ViewModels
 
         [Display(Name = "IDIssuancePlace", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDIssuancePlaceRequired")]
-        public string id_issuance_place { get; set; }
+        public int id_issuance_place { get; set; }
 
         [Display(Name = "IDIssuanceDate", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDIssuanceDateRequired")]
@@ -75,25 +75,33 @@ namespace VenturaITC.DSMS.ViewModels
         [Display(Name = "Email", ResourceType = typeof(ResourcesFields))]
         [DataType(DataType.EmailAddress)]
         public string email { get; set; }
+        [Display(Name = "StudentType", ResourceType = typeof(ResourcesFields))]
         public int student_type_id { get; set; }
 
+        [Display(Name = "MaritalStatus", ResourceType = typeof(ResourcesFields))]
         public int marital_status_id { get; set; }
-        public int gender_id { get; set; }
-        public int province_of_birth_id { get; set; }
-        public int academic_level_id { get; set; }
-        public int status_id { get; set; }
 
-        public virtual academic_level academic_level { get; set; }
-        public virtual gender gender { get; set; }
-        public virtual marital_status marital_status { get; set; }
-        public virtual province province { get; set; }
-        public virtual province province1 { get; set; }
-        public virtual status status { get; set; }
-        public virtual student_type student_type { get; set; }
+        [Display(Name = "Gender", ResourceType = typeof(ResourcesFields))]
+        public int gender_id { get; set; }
+
+        [Display(Name = "ProvinceOfBirth", ResourceType = typeof(ResourcesFields))]
+        public int province_of_birth_id { get; set; }
+
+        [Display(Name = "AcademicLevel", ResourceType = typeof(ResourcesFields))]
+        public int academic_level_id { get; set; }
+
+        //[Display(Name = "Status", ResourceType = typeof(ResourcesFields))]
+        //public string name;
+        //status
         #endregion
 
         #region EnrollmentData
+        [Display(Name = "Category", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "CategoryRequired")]
         public int category_id { get; set; }
+
+        [Display(Name = "PaymentType", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PaymentTypeRequired")]
         public int payment_type_id { get; set; }
 
         [Display(Name = "ReceiptNumber", ResourceType = typeof(ResourcesFields))]
@@ -109,13 +117,11 @@ namespace VenturaITC.DSMS.ViewModels
         [Display(Name = "AmountToPay", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "AmountToPayRequired")]
         public decimal amountToPay { get; set; }
-        public virtual category category { get; set; }
-        public virtual payment_type payment_type { get; set; }
         #endregion
 
         #region Documents
         [Display(Name = "Picture", ResourceType = typeof(ResourcesFields))]
-        [RegularExpression(@".*\.([jJ][pP][gG]|[jJ][pP][eE][gG]|[pP][nN][gG])$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PictureInvalidFormat")]
+        [FileExtensions(Extensions = "png,jpg,jpeg", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PictureInvalidFormat")]
         public HttpPostedFileBase picture { get; set; }
 
         [Display(Name = "IDCopy", ResourceType = typeof(ResourcesFields))]

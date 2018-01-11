@@ -12,14 +12,15 @@ namespace VenturaITC.DSMS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class student_documentation
+    public partial class document
     {
         public int id { get; set; }
         public int student_id { get; set; }
         public int document_type_id { get; set; }
         public byte[] document_content { get; set; }
     
-        public virtual document_type document_type { get; set; }
         public virtual student student { get; set; }
+        public virtual document_type document_type { get; set; }
+        public virtual student student1 { get; set; }
     }
 }

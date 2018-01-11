@@ -17,7 +17,7 @@ namespace VenturaITC.DSMS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public document_type()
         {
-            this.student_documentation = new HashSet<student_documentation>();
+            this.documents = new HashSet<document>();
         }
     
         public int id { get; set; }
@@ -26,6 +26,6 @@ namespace VenturaITC.DSMS.Models
         public string file_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student_documentation> student_documentation { get; set; }
+        public virtual ICollection<document> documents { get; set; }
     }
 }

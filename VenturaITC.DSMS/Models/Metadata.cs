@@ -181,53 +181,5 @@ namespace VenturaITC.DSMS.Models
     //    public string email;
     //}
 
-    public class StudentTypeMetadata
-    {
-        [Display(Name = "StudentType", ResourceType = typeof(ResourcesFields))]
-        public string name;
-    }
-
-    public class GenderMetadata
-    {
-        [Display(Name = "Gender", ResourceType = typeof(ResourcesFields))]
-        public string name;
-    }
-
-    public class MaritalStatusMetadata
-    {
-        [Display(Name = "MaritalStatus", ResourceType = typeof(ResourcesFields))]
-        public string name;
-    }
-
-    public class ProvinceMetadata
-    {
-        [Display(Name = "ProvinceOfBirth", ResourceType = typeof(ResourcesFields))]
-        public string name;
-    }
-
-    public class AcademicLevelMetadata
-    {
-        [Display(Name = "AcademicLevel", ResourceType = typeof(ResourcesFields))]
-        public string name;
-    }
-
-    public class StatusMetadata
-    {
-        [Display(Name = "Status", ResourceType = typeof(ResourcesFields))]
-        public string name;
-    }
-
-    public class CategoryMetadata
-    {
-        [Display(Name = "Category", ResourceType = typeof(ResourcesFields))]
-        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "CategoryRequired")]
-        public string name;
-    }
-
-    public class PaymentTypeMetadata
-    {
-        [Display(Name = "PaymentType", ResourceType = typeof(ResourcesFields))]
-        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PaymentTypeRequired")]
-        public string name;
-    }
+    
 }

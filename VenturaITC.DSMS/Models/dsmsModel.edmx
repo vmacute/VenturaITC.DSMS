@@ -27,6 +27,15 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="document">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="student_id" Type="int" Nullable="false" />
+          <Property Name="document_type_id" Type="int" Nullable="false" />
+          <Property Name="document_content" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="document_type">
           <Key>
             <PropertyRef Name="id" />
@@ -149,8 +158,6 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="student_type_id" Type="int" Nullable="false" />
           <Property Name="full_name" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="birth_date" Type="date" Nullable="false" />
           <Property Name="marital_status_id" Type="int" Nullable="false" />
           <Property Name="gender_id" Type="int" Nullable="false" />
@@ -170,15 +177,6 @@
           <Property Name="cell_phone2" Type="varchar" MaxLength="50" />
           <Property Name="email" Type="varchar" MaxLength="255" />
           <Property Name="status_id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="student_documentation">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="student_id" Type="int" Nullable="false" />
-          <Property Name="document_type_id" Type="int" Nullable="false" />
-          <Property Name="document_content" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="student_enrollment">
           <Key>
@@ -249,6 +247,18 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK_document_student">
+          <End Role="student" Type="Self.student" Multiplicity="1" />
+          <End Role="document" Type="Self.document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="document">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_enrollment_category">
           <End Role="category" Type="Self.category" Multiplicity="1" />
           <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
@@ -431,24 +441,24 @@
         </Association>
         <Association Name="FK_StudentDocumentation_DocumentType">
           <End Role="document_type" Type="Self.document_type" Multiplicity="1" />
-          <End Role="student_documentation" Type="Self.student_documentation" Multiplicity="*" />
+          <End Role="document" Type="Self.document" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="document_type">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="student_documentation">
+            <Dependent Role="document">
               <PropertyRef Name="document_type_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StudentDocumentation_Student">
           <End Role="student" Type="Self.student" Multiplicity="1" />
-          <End Role="student_documentation" Type="Self.student_documentation" Multiplicity="*" />
+          <End Role="document" Type="Self.document" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="student">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="student_documentation">
+            <Dependent Role="document">
               <PropertyRef Name="student_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -505,6 +515,7 @@
           <EntitySet Name="academic_level" EntityType="Self.academic_level" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="db_data_status" EntityType="Self.db_data_status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="document" EntityType="Self.document" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="document_type" EntityType="Self.document_type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="enrollment" EntityType="Self.enrollment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="gender" EntityType="Self.gender" Schema="dbo" store:Type="Tables" />
@@ -521,13 +532,16 @@
           <EntitySet Name="province" EntityType="Self.province" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="student_documentation" EntityType="Self.student_documentation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="student_enrollment" EntityType="Self.student_enrollment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="student_payment" EntityType="Self.student_payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="student_type" EntityType="Self.student_type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_role" EntityType="Self.user_role" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_document_student" Association="Self.FK_document_student">
+            <End Role="student" EntitySet="student" />
+            <End Role="document" EntitySet="document" />
+          </AssociationSet>
           <AssociationSet Name="FK_enrollment_category" Association="Self.FK_enrollment_category">
             <End Role="category" EntitySet="category" />
             <End Role="enrollment" EntitySet="enrollment" />
@@ -590,11 +604,11 @@
           </AssociationSet>
           <AssociationSet Name="FK_StudentDocumentation_DocumentType" Association="Self.FK_StudentDocumentation_DocumentType">
             <End Role="document_type" EntitySet="document_type" />
-            <End Role="student_documentation" EntitySet="student_documentation" />
+            <End Role="document" EntitySet="document" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentDocumentation_Student" Association="Self.FK_StudentDocumentation_Student">
             <End Role="student" EntitySet="student" />
-            <End Role="student_documentation" EntitySet="student_documentation" />
+            <End Role="document" EntitySet="document" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentPayment_Student" Association="Self.FK_StudentPayment_Student">
             <End Role="student" EntitySet="student" />
@@ -621,6 +635,7 @@
           <EntitySet Name="academic_level" EntityType="dsmsModel.academic_level" />
           <EntitySet Name="categories" EntityType="dsmsModel.category" />
           <EntitySet Name="db_data_status" EntityType="dsmsModel.db_data_status" />
+          <EntitySet Name="documents" EntityType="dsmsModel.document" />
           <EntitySet Name="document_type" EntityType="dsmsModel.document_type" />
           <EntitySet Name="enrollments" EntityType="dsmsModel.enrollment" />
           <EntitySet Name="genders" EntityType="dsmsModel.gender" />
@@ -637,7 +652,6 @@
           <EntitySet Name="provinces" EntityType="dsmsModel.province" />
           <EntitySet Name="status" EntityType="dsmsModel.status" />
           <EntitySet Name="students" EntityType="dsmsModel.student" />
-          <EntitySet Name="student_documentation" EntityType="dsmsModel.student_documentation" />
           <EntitySet Name="student_enrollment" EntityType="dsmsModel.student_enrollment" />
           <EntitySet Name="student_payment" EntityType="dsmsModel.student_payment" />
           <EntitySet Name="student_type" EntityType="dsmsModel.student_type" />
@@ -656,9 +670,17 @@
             <End Role="db_data_status" EntitySet="db_data_status" />
             <End Role="user" EntitySet="users" />
           </AssociationSet>
+          <AssociationSet Name="FK_document_student" Association="dsmsModel.FK_document_student">
+            <End Role="student" EntitySet="students" />
+            <End Role="document" EntitySet="documents" />
+          </AssociationSet>
           <AssociationSet Name="FK_StudentDocumentation_DocumentType" Association="dsmsModel.FK_StudentDocumentation_DocumentType">
             <End Role="document_type" EntitySet="document_type" />
-            <End Role="student_documentation" EntitySet="student_documentation" />
+            <End Role="document" EntitySet="documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentDocumentation_Student" Association="dsmsModel.FK_StudentDocumentation_Student">
+            <End Role="student" EntitySet="students" />
+            <End Role="document" EntitySet="documents" />
           </AssociationSet>
           <AssociationSet Name="FK_enrollment_payment" Association="dsmsModel.FK_enrollment_payment">
             <End Role="payment" EntitySet="payments" />
@@ -712,10 +734,6 @@
             <End Role="student_type" EntitySet="student_type" />
             <End Role="student" EntitySet="students" />
           </AssociationSet>
-          <AssociationSet Name="FK_StudentDocumentation_Student" Association="dsmsModel.FK_StudentDocumentation_Student">
-            <End Role="student" EntitySet="students" />
-            <End Role="student_documentation" EntitySet="student_documentation" />
-          </AssociationSet>
           <AssociationSet Name="FK_StudentPayment_Student" Association="dsmsModel.FK_StudentPayment_Student">
             <End Role="student" EntitySet="students" />
             <End Role="student_payment" EntitySet="student_payment" />
@@ -754,6 +772,18 @@
           <Property Name="description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="users" Relationship="dsmsModel.FK_User_DBDataStatus" FromRole="db_data_status" ToRole="user" />
         </EntityType>
+        <EntityType Name="document">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="student_id" Type="Int32" Nullable="false" />
+          <Property Name="document_type_id" Type="Int32" Nullable="false" />
+          <Property Name="document_content" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="student" Relationship="dsmsModel.FK_document_student" FromRole="document" ToRole="student" />
+          <NavigationProperty Name="document_type" Relationship="dsmsModel.FK_StudentDocumentation_DocumentType" FromRole="document" ToRole="document_type" />
+          <NavigationProperty Name="student1" Relationship="dsmsModel.FK_StudentDocumentation_Student" FromRole="document" ToRole="student" />
+        </EntityType>
         <EntityType Name="document_type">
           <Key>
             <PropertyRef Name="id" />
@@ -762,7 +792,7 @@
           <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="max_size_mb" Type="Int32" Nullable="false" />
           <Property Name="file_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="student_documentation" Relationship="dsmsModel.FK_StudentDocumentation_DocumentType" FromRole="document_type" ToRole="student_documentation" />
+          <NavigationProperty Name="documents" Relationship="dsmsModel.FK_StudentDocumentation_DocumentType" FromRole="document_type" ToRole="document" />
         </EntityType>
         <EntityType Name="enrollment">
           <Key>
@@ -895,8 +925,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="student_type_id" Type="Int32" Nullable="false" />
           <Property Name="full_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="birth_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="marital_status_id" Type="Int32" Nullable="false" />
           <Property Name="gender_id" Type="Int32" Nullable="false" />
@@ -917,6 +945,8 @@
           <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="status_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="academic_level" Relationship="dsmsModel.FK_student_academic_level" FromRole="student" ToRole="academic_level" />
+          <NavigationProperty Name="documents" Relationship="dsmsModel.FK_document_student" FromRole="student" ToRole="document" />
+          <NavigationProperty Name="documents1" Relationship="dsmsModel.FK_StudentDocumentation_Student" FromRole="student" ToRole="document" />
           <NavigationProperty Name="enrollments" Relationship="dsmsModel.FK_enrollment_student" FromRole="student" ToRole="enrollment" />
           <NavigationProperty Name="gender" Relationship="dsmsModel.FK_student_gender" FromRole="student" ToRole="gender" />
           <NavigationProperty Name="marital_status" Relationship="dsmsModel.FK_student_marital_status" FromRole="student" ToRole="marital_status" />
@@ -924,20 +954,8 @@
           <NavigationProperty Name="province1" Relationship="dsmsModel.FK_student_province1" FromRole="student" ToRole="province" />
           <NavigationProperty Name="status" Relationship="dsmsModel.FK_student_status" FromRole="student" ToRole="status" />
           <NavigationProperty Name="student_type" Relationship="dsmsModel.FK_student_student_type" FromRole="student" ToRole="student_type" />
-          <NavigationProperty Name="student_documentation" Relationship="dsmsModel.FK_StudentDocumentation_Student" FromRole="student" ToRole="student_documentation" />
           <NavigationProperty Name="student_payment" Relationship="dsmsModel.FK_StudentPayment_Student" FromRole="student" ToRole="student_payment" />
           <NavigationProperty Name="student_enrollment" Relationship="dsmsModel.FK_StudentRegistration_Student" FromRole="student" ToRole="student_enrollment" />
-        </EntityType>
-        <EntityType Name="student_documentation">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="student_id" Type="Int32" Nullable="false" />
-          <Property Name="document_type_id" Type="Int32" Nullable="false" />
-          <Property Name="document_content" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="document_type" Relationship="dsmsModel.FK_StudentDocumentation_DocumentType" FromRole="student_documentation" ToRole="document_type" />
-          <NavigationProperty Name="student" Relationship="dsmsModel.FK_StudentDocumentation_Student" FromRole="student_documentation" ToRole="student" />
         </EntityType>
         <EntityType Name="student_enrollment">
           <Key>
@@ -1051,15 +1069,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_document_student">
+          <End Type="dsmsModel.student" Role="student" Multiplicity="1" />
+          <End Type="dsmsModel.document" Role="document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="document">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StudentDocumentation_DocumentType">
           <End Type="dsmsModel.document_type" Role="document_type" Multiplicity="1" />
-          <End Type="dsmsModel.student_documentation" Role="student_documentation" Multiplicity="*" />
+          <End Type="dsmsModel.document" Role="document" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="document_type">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="student_documentation">
+            <Dependent Role="document">
               <PropertyRef Name="document_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentDocumentation_Student">
+          <End Type="dsmsModel.student" Role="student" Multiplicity="1" />
+          <End Type="dsmsModel.document" Role="document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="student">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="document">
+              <PropertyRef Name="student_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1219,18 +1261,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_StudentDocumentation_Student">
-          <End Type="dsmsModel.student" Role="student" Multiplicity="1" />
-          <End Type="dsmsModel.student_documentation" Role="student_documentation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="student">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="student_documentation">
-              <PropertyRef Name="student_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_StudentPayment_Student">
           <End Type="dsmsModel.student" Role="student" Multiplicity="1" />
           <End Type="dsmsModel.student_payment" Role="student_payment" Multiplicity="*" />
@@ -1295,6 +1325,16 @@
               <MappingFragment StoreEntitySet="db_data_status">
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="documents">
+            <EntityTypeMapping TypeName="dsmsModel.document">
+              <MappingFragment StoreEntitySet="document">
+                <ScalarProperty Name="document_content" ColumnName="document_content" />
+                <ScalarProperty Name="document_type_id" ColumnName="document_type_id" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1449,20 +1489,8 @@
                 <ScalarProperty Name="gender_id" ColumnName="gender_id" />
                 <ScalarProperty Name="marital_status_id" ColumnName="marital_status_id" />
                 <ScalarProperty Name="birth_date" ColumnName="birth_date" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
                 <ScalarProperty Name="full_name" ColumnName="full_name" />
                 <ScalarProperty Name="student_type_id" ColumnName="student_type_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="student_documentation">
-            <EntityTypeMapping TypeName="dsmsModel.student_documentation">
-              <MappingFragment StoreEntitySet="student_documentation">
-                <ScalarProperty Name="document_content" ColumnName="document_content" />
-                <ScalarProperty Name="document_type_id" ColumnName="document_type_id" />
-                <ScalarProperty Name="student_id" ColumnName="student_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

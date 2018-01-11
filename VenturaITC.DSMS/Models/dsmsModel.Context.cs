@@ -28,6 +28,7 @@ namespace VenturaITC.DSMS.Models
         public virtual DbSet<academic_level> academic_level { get; set; }
         public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<db_data_status> db_data_status { get; set; }
+        public virtual DbSet<document> documents { get; set; }
         public virtual DbSet<document_type> document_type { get; set; }
         public virtual DbSet<enrollment> enrollments { get; set; }
         public virtual DbSet<gender> genders { get; set; }
@@ -44,7 +45,6 @@ namespace VenturaITC.DSMS.Models
         public virtual DbSet<province> provinces { get; set; }
         public virtual DbSet<status> status { get; set; }
         public virtual DbSet<student> students { get; set; }
-        public virtual DbSet<student_documentation> student_documentation { get; set; }
         public virtual DbSet<student_enrollment> student_enrollment { get; set; }
         public virtual DbSet<student_payment> student_payment { get; set; }
         public virtual DbSet<student_type> student_type { get; set; }

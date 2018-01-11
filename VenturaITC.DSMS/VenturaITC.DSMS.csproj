@@ -224,6 +224,9 @@
     <Compile Include="Models\db_data_status.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\document.cs">
+      <DependentUpon>dsmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\document_type.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
@@ -287,9 +290,6 @@
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\student.cs">
-      <DependentUpon>dsmsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\student_documentation.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\student_enrollment.cs">

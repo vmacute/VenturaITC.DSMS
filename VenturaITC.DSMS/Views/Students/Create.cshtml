@@ -18,10 +18,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group required">
-                        @Html.LabelFor(model => model.student_type.name, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.student_type_id, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.DropDownListFor(model => model.student_type_id, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.student_type.name, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.student_type_id, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -47,10 +47,10 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group required">
-                        @Html.LabelFor(model => model.marital_status.name, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.marital_status_id, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.DropDownListFor(model => model.marital_status_id, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.marital_status.name, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.marital_status_id, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -59,10 +59,10 @@
                 <div class="col-md-6">
 
                     <div class="form-group required">
-                        @Html.LabelFor(model => model.gender.name, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.gender_id, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.DropDownListFor(model => model.gender_id, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.gender.name, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.gender_id, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -79,10 +79,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group required">
-                        @Html.LabelFor(model => model.province.name, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.province_of_birth_id, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.DropDownListFor(model => model.province_of_birth_id, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.province.name, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.province_of_birth_id, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -160,10 +160,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group required">
-                        @Html.LabelFor(model => model.academic_level.name, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.academic_level_id, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.DropDownListFor(model => model.academic_level_id, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.academic_level.name, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.academic_level_id, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -226,8 +226,8 @@
             <legend class="fieldset-legend">@Resources.ResourcesTitles.CategoryAndPayment</legend>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.category.name, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="form-group required">
+                        @Html.LabelFor(model => model.category_id, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.DropDownListFor(model => model.category_id, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.category_id, "", new { @class = "text-danger" })
@@ -245,8 +245,8 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.payment_type.name, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="form-group required">
+                        @Html.LabelFor(model => model.payment_type_id, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
                             @Html.DropDownListFor(model => model.payment_type_id, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.payment_type_id, "", new { @class = "text-danger" })

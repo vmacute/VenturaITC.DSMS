@@ -40,17 +40,7 @@ namespace VenturaITC.DSMS.Controllers
         // GET: Students/Create
         public ActionResult Create()
         {
-            ViewBag.academic_level_id = new SelectList(db.academic_level, "id", "name");
-            ViewBag.marital_status_id = new SelectList(db.marital_status, "id", "name");
-            ViewBag.province_of_birth_id = new SelectList(db.provinces, "id", "name");
-            ViewBag.status_id = new SelectList(db.status, "id", "name");
-            ViewBag.student_type_id = new SelectList(db.student_type, "id", "name");
-            ViewBag.gender_id = new SelectList(db.genders, "id", "name");
-            ViewBag.id_issuance_place = new SelectList(db.provinces, "id", "name");
-
-            //For enrollment data
-            ViewBag.category_id = new SelectList(db.categories, "id", "name");
-            ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name");
+            BindDropdownsOnCreate();
             return View();
         }
 
@@ -59,18 +49,74 @@ namespace VenturaITC.DSMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(StudentEnrolmentViewModel student)
+        public ActionResult Create(StudentEnrolmentViewModel model)
         {
             if (ModelState.IsValid)
             {
-                //db.students.Add(student);
-                //db.SaveChanges();
+                using (dsmsEntities db = new dsmsEntities())
+                {
+                    //Insert student data.
+                    student stud = new student()
+                    {
+                        student_type_id = model.student_type_id,
+                        full_name = model.full_name,
+                        birth_date = model.birth_date,
+                        marital_status_id = model.marital_status_id,
+                        gender_id = model.gender_id,
+                        place_of_birth = model.place_of_birth,
+                        province_of_birth_id = model.province_of_birth_id,
+                        fathers_name = model.fathers_name,
+                        mothers_name = model.mothers_name,
+                        address = model.address,
+                        id_number = model.id_number,
+                        id_issuance_place = model.id_issuance_place,
+                        id_issuance_date = model.id_issuance_date,
+                        id_expiry_date = model.id_expiry_date,
+                        academic_level_id = model.academic_level_id,
+                        job_title = model.job_title,
+                        phone_number = model.phone_number,
+                        cell_phone1 = model.cell_phone1,
+                        cell_phone2 = model.cell_phone2,
+                        email = model.email
+                    };
+
+                    db.students.Add(stud);
+                    //db.SaveChanges();
+
+
+                    //Insert enrollment data
+                    payment paym = new payment()
+                    {
+                        id=model.payment_id,
+                        amount = model.amountToPay,
+                        date = DateTime.Now,
+                    };
+
+                    enrollment enroll = new enrollment()
+                    {
+                        category_id = model.category_id,
+                        payment_id = paym.id,
+                        payment_type_id=model.payment_type_id,
+                        student_id=stud.id
+                    };
+
+                    document doc = new document()
+                    {
+
+                    };
+
+                    //Insert documents.
+                    if (model.picture!=null)
+                    {
+
+                    }
+                }
 
                 return RedirectToAction("Index");
             }
-            InitializeDropdowns(student);
+            //BindDropdownsOnUpdate(student);
 
-            return View(student);
+            return View();
         }
 
         // GET: Students/Edit/5
@@ -102,7 +148,7 @@ namespace VenturaITC.DSMS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-          //  InitializeDropdowns(student);
+            //  InitializeDropdowns(student);
             return View(student);
         }
 
@@ -141,12 +187,27 @@ namespace VenturaITC.DSMS.Controllers
             base.Dispose(disposing);
         }
 
-        private void InitializeDropdowns(StudentEnrolmentViewModel student)
+        private void BindDropdownsOnCreate()
+        {
+            ViewBag.academic_level_id = new SelectList(db.academic_level, "id", "name");
+            ViewBag.marital_status_id = new SelectList(db.marital_status, "id", "name");
+            ViewBag.province_of_birth_id = new SelectList(db.provinces, "id", "name");
+            ViewBag.status_id = new SelectList(db.status, "id", "name");
+            ViewBag.student_type_id = new SelectList(db.student_type, "id", "name");
+            ViewBag.gender_id = new SelectList(db.genders, "id", "name");
+            ViewBag.id_issuance_place = new SelectList(db.provinces, "id", "name");
+
+            //For enrollment data
+            ViewBag.category_id = new SelectList(db.categories, "id", "name");
+            ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name");
+        }
+
+        private void BindDropdownsOnUpdate(StudentEnrolmentViewModel student)
         {
             ViewBag.academic_level_id = new SelectList(db.academic_level, "id", "name", student.academic_level_id);
             ViewBag.marital_status_id = new SelectList(db.marital_status, "id", "name", student.marital_status_id);
             ViewBag.province_of_birth_id = new SelectList(db.provinces, "id", "name", student.province_of_birth_id);
-            ViewBag.status_id = new SelectList(db.status, "id", "name", student.status_id);
+            // ViewBag.status_id = new SelectList(db.status, "id", "name", student.status_id);
             ViewBag.student_type_id = new SelectList(db.student_type, "id", "name", student.student_type_id);
             ViewBag.gender_id = new SelectList(db.genders, "id", "name", student.gender_id);
             ViewBag.id_issuance_place = new SelectList(db.provinces, "id", "name", student.id_issuance_place);
