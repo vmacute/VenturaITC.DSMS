@@ -87,7 +87,7 @@ namespace VenturaITC.DSMS.Controllers
                     //Insert enrollment data
                     payment paym = new payment()
                     {
-                        id=model.payment_id,
+                        id = model.payment_id,
                         amount = model.amountToPay,
                         date = DateTime.Now,
                     };
@@ -96,8 +96,8 @@ namespace VenturaITC.DSMS.Controllers
                     {
                         category_id = model.category_id,
                         payment_id = paym.id,
-                        payment_type_id=model.payment_type_id,
-                        student_id=stud.id
+                        payment_type_id = model.payment_type_id,
+                        student_id = stud.id
                     };
 
                     document doc = new document()
@@ -106,7 +106,7 @@ namespace VenturaITC.DSMS.Controllers
                     };
 
                     //Insert documents.
-                    if (model.picture!=null)
+                    if (model.picture != null)
                     {
 
                     }
@@ -215,6 +215,69 @@ namespace VenturaITC.DSMS.Controllers
             //For enrollment data
             ViewBag.category_id = new SelectList(db.categories, "id", "name", student.category_id);
             ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name", student.payment_type_id);
+        }
+
+        /// <summary>
+        /// Gets the Category cost.
+        /// </summary>
+        /// <param name="categoryID">The category ID.</param>
+        /// <returns>The cost of the give Category's ID.</returns>
+        [HttpGet]
+        public JsonResult GetCategoryCost(int categoryID)
+        {
+            try
+            {
+                using (dsmsEntities db = new dsmsEntities())
+                {
+                    category categ = db.categories.Find(categoryID);
+                    return Json(new { categoryCost = categ.cost.ToString("N2") }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Gets the Category cost.
+        /// </summary>
+        /// <param name="categoryID">The category ID.</param>
+        /// <returns>The cost of the give Category's ID.</returns>
+        [HttpGet]
+        public JsonResult GetPaymentData(int categoryID, int paymentTypeID)
+        {
+            try
+            {
+                using (dsmsEntities db = new dsmsEntities())
+                {
+                    category categ = db.categories.Find(categoryID);
+                    decimal percent = db.installments.Find(1).percentage;
+
+                    switch (paymentTypeID)
+                    {
+                        case 2:
+                            return Json(new
+                            {
+                                //TODO: check for easy way to get value's percentage
+                                minimumAmount = (categ.cost * percent / 100).ToString("N2"),
+                                amountToPay = (categ.cost * percent / 100).ToString("N2")
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        default:
+                            return Json(new
+                            {
+                                minimumAmount = categ.cost.ToString("N2"),
+                                amountToPay = categ.cost.ToString("N2")
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
