@@ -60,7 +60,7 @@ namespace VenturaITC.DSMS.Controllers
             {
                 if (UserUtils.ExistUsername(user.username))
                 {
-                    ShowDangerMsg(Resources.ResourcesMsgsError.AlreadyExistsUsername);
+                    ShowErrorAlert(Resources.ResourcesMsgsError.AlreadyExistsUsername);
                 }
                 else
                 {
@@ -77,7 +77,7 @@ namespace VenturaITC.DSMS.Controllers
                     db.users.Add(user);
                     db.SaveChanges();
 
-                    ShowSuccessMsg(Resources.ResourcesMsgsSuccess.SucessSaveUser);
+                    ShowSuccessAlert(Resources.ResourcesMsgsSuccess.SucessSaveUser);
                 }
             }
 
@@ -137,7 +137,7 @@ namespace VenturaITC.DSMS.Controllers
                 db.Entry(dbUser).State = EntityState.Modified;
                 db.SaveChanges();
 
-                ShowSuccessMsg(Resources.ResourcesMsgsSuccess.SucessSaveUser);
+                ShowSuccessAlert(Resources.ResourcesMsgsSuccess.SucessSaveUser);
             }
 
             ViewBag.status = new SelectList(db.db_data_status, "name", "description", user.status);
@@ -205,7 +205,7 @@ namespace VenturaITC.DSMS.Controllers
                 //db.Entry(dbUser).State = EntityState.Modified;
                 //db.SaveChanges();
 
-                ShowSuccessMsg(Resources.ResourcesMsgsSuccess.SucessSaveUser);
+                ShowSuccessAlert(Resources.ResourcesMsgsSuccess.SucessSaveUser);
             }
 
             return View();

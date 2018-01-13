@@ -3,11 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace VenturaITC.DSMS.Classes
+namespace VenturaITC.DSMS.Utils
 {
+    /// <summary>
+    /// Provides application constants. 
+    /// </summary>
+    /// <author> Ventura Macute - ventura.macute@gmail.com </author>
+    /// <history>
+    /// __________________________________________________________________________
+    /// History :
+    /// 20180113    Ventura Macute    [+]    Inicial version
+    /// __________________________________________________________________________
+    /// </history>
     public class AppConstants
     {
 
+        public struct Numeric
+        {
+            public const string NUMBER_FORMATTING = "0.00";
+        }
         /// <summary>
         /// General constants.
         /// </summary>

@@ -97,8 +97,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Módulo de gestão de pagamentos.
-        ///                    A modalidade de pagamento pode ser total ou em prestações..
+        ///   Looks up a localized string similar to Tenha a gestão de pagamentos facilitada..
         /// </summary>
         internal static string ModulePaymentsDesc {
             get {
@@ -116,7 +115,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Módulo de inscrições e gestão de alunos, quer internos assim como externos..
+        ///   Looks up a localized string similar to Inscreva e faça a gestão dos seus alunos de forma fácil..
         /// </summary>
         internal static string ModuleRegistrationDesc {
             get {
@@ -134,7 +133,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Módulo de carregamento de exercícios, realização e gestão de testes..
+        ///   Looks up a localized string similar to Chega de gastar tanto papel e tinta. Através da aplicação poderá criar os testes e os alunos poderão realizá-los na mesma plataforma. Os resultados ficam disponíveis logo que o alunto termina o teste..
         /// </summary>
         internal static string ModuleTestsDesc {
             get {

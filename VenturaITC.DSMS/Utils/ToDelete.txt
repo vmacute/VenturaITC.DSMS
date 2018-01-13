@@ -10,3 +10,33 @@
                     <div class="col-md-6">
                     </div>
                 </div>
+
+
+
+    /// <summary>
+    /// Provides payment utility methods. 
+    /// </summary>
+    /// <author> Ventura Macute - ventura.macute@gmail.com </author>
+    /// <history>
+    /// __________________________________________________________________________
+    /// History :
+    /// 20180113    Ventura Macute    [+]    Inicial version
+    /// __________________________________________________________________________
+    /// </history>
+
+
+	    /// <summary>
+        /// Gets the Create view.
+        /// </summary>
+        /// <returns>The Create view.</returns>
+
+
+		        /// <summary>
+        /// Posts the Create view.
+        /// </summary>
+        /// <param name="model">The model that is rendered by the view.</param>
+        /// <returns>The action method result.</returns>
+        /// <remarks>
+        /// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        /// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// </remarks>

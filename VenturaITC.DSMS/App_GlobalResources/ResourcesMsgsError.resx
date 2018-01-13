@@ -120,4 +120,7 @@
   <data name="AlreadyExistsUsername" xml:space="preserve">
     <value>Já existe um utilizador com o mesmo Username.</value>
   </data>
+  <data name="AmountToPayLess" xml:space="preserve">
+    <value>O valor a pagar não deve ser inferior ao valor mínimo.</value>
+  </data>
 </root>

@@ -11,6 +11,10 @@ namespace VenturaITC.DSMS.ViewModels
     public class StudentEnrolmentViewModel
     {
         #region StudentData
+        [Display(Name = "StudentType", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "StudentTypeRequired")]
+        public int student_type_id { get; set; }
+
         [Display(Name = "FullName", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "FullNameRequired")]
         [RegularExpression("([A-Z][a-z]{3,} )([A-Z][a-z]{3,} )?([A-Z][a-z]{3,})", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "NameMalformed")]
@@ -27,10 +31,12 @@ namespace VenturaITC.DSMS.ViewModels
 
         [Display(Name = "FathersName", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "FathersNameRequired")]
+        [RegularExpression("([A-Z][a-z]{3,} )([A-Z][a-z]{3,} )?([A-Z][a-z]{3,})", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "NameMalformed")]
         public string fathers_name { get; set; }
 
         [Display(Name = "MothersName", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "MothersNameRequired")]
+        [RegularExpression("([A-Z][a-z]{3,} )([A-Z][a-z]{3,} )?([A-Z][a-z]{3,})", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "NameMalformed")]
         public string mothers_name { get; set; }
 
         [Display(Name = "Address", ResourceType = typeof(ResourcesFields))]
@@ -53,7 +59,6 @@ namespace VenturaITC.DSMS.ViewModels
         [Display(Name = "IDExpiryDate", ResourceType = typeof(ResourcesFields))]
         [DataType(DataType.Date)]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDExpiryDateRequired")]
-        [RegularExpression(@"^\d{12}[A-Z]$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDNumberMalformed")]
         public DateTime id_expiry_date { get; set; }
 
         [Display(Name = "JobTitle", ResourceType = typeof(ResourcesFields))]
@@ -75,19 +80,21 @@ namespace VenturaITC.DSMS.ViewModels
         [Display(Name = "Email", ResourceType = typeof(ResourcesFields))]
         [DataType(DataType.EmailAddress)]
         public string email { get; set; }
-        [Display(Name = "StudentType", ResourceType = typeof(ResourcesFields))]
-        public int student_type_id { get; set; }
 
         [Display(Name = "MaritalStatus", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "MaritalStatusRequired")]
         public int marital_status_id { get; set; }
 
         [Display(Name = "Gender", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "GenderRequired")]
         public int gender_id { get; set; }
 
         [Display(Name = "ProvinceOfBirth", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "ProvinceOfBirthRequired")]
         public int province_of_birth_id { get; set; }
 
         [Display(Name = "AcademicLevel", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "AcademicLevelRequired")]
         public int academic_level_id { get; set; }
 
         //[Display(Name = "Status", ResourceType = typeof(ResourcesFields))]

@@ -24,10 +24,12 @@ namespace VenturaITC.DSMS.Models
         public int id { get; set; }
         public decimal amount { get; set; }
         public System.DateTime date { get; set; }
+        public int user_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<enrollment> enrollments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<payment_installment> payment_installment { get; set; }
+        public virtual user user { get; set; }
     }
 }

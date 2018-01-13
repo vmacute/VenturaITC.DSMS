@@ -7,22 +7,39 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using VenturaITC.DSMS.Models;
+using VenturaITC.DSMS.Utils;
 using VenturaITC.DSMS.ViewModels;
 
 namespace VenturaITC.DSMS.Controllers
 {
-    public class StudentsController : Controller
+    /// <summary>
+    /// Represents the Student controller class.
+    /// </summary>
+    /// <author> Ventura Macute - ventura.macute@gmail.com </author>
+    /// <history>
+    /// __________________________________________________________________________
+    /// History :
+    /// 20180103    Ventura Macute    [+]    Inicial version
+    /// __________________________________________________________________________
+    /// </history>
+    public class StudentsController : BaseController
     {
-        private dsmsEntities db = new dsmsEntities();
+        private _dsmsEntities db = new _dsmsEntities();
 
-        // GET: Students
+        /// <summary>
+        /// Gets the Index view.
+        /// </summary>
+        /// <returns>The Index view.</returns>
         public ActionResult Index()
         {
             var students = db.students.Include(s => s.academic_level).Include(s => s.gender).Include(s => s.marital_status).Include(s => s.province).Include(s => s.province1).Include(s => s.status).Include(s => s.student_type);
             return View(students.ToList());
         }
 
-        // GET: Students/Details/5
+        /// <summary>
+        /// Gets the Details view.
+        /// </summary>
+        /// <returns>The Details view.</returns>
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,84 +54,204 @@ namespace VenturaITC.DSMS.Controllers
             return View(student);
         }
 
-        // GET: Students/Create
+        /// <summary>
+        /// Gets the Create view.
+        /// </summary>
+        /// <returns>The Create view.</returns>
         public ActionResult Create()
         {
-            BindDropdownsOnCreate();
+            BindDropdownsOnGetView();
             return View();
         }
 
-        // POST: Students/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Posts the Create view.
+        /// </summary>
+        /// <param name="model">The model that is rendered by the view.</param>
+        /// <returns>The action method result.</returns>
+        /// <remarks>
+        /// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        /// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// </remarks>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(StudentEnrolmentViewModel model)
         {
             if (ModelState.IsValid)
             {
-                using (dsmsEntities db = new dsmsEntities())
+                //Validations:
+                if (model.student_type_id != 2 && model.amountToPay < model.minimumAmount)
                 {
-                    //Insert student data.
-                    student stud = new student()
-                    {
-                        student_type_id = model.student_type_id,
-                        full_name = model.full_name,
-                        birth_date = model.birth_date,
-                        marital_status_id = model.marital_status_id,
-                        gender_id = model.gender_id,
-                        place_of_birth = model.place_of_birth,
-                        province_of_birth_id = model.province_of_birth_id,
-                        fathers_name = model.fathers_name,
-                        mothers_name = model.mothers_name,
-                        address = model.address,
-                        id_number = model.id_number,
-                        id_issuance_place = model.id_issuance_place,
-                        id_issuance_date = model.id_issuance_date,
-                        id_expiry_date = model.id_expiry_date,
-                        academic_level_id = model.academic_level_id,
-                        job_title = model.job_title,
-                        phone_number = model.phone_number,
-                        cell_phone1 = model.cell_phone1,
-                        cell_phone2 = model.cell_phone2,
-                        email = model.email
-                    };
+                    ShowErrorAlert(Resources.ResourcesMsgsError.AmountToPayLess);
+                    BindDropdownsOnPostView(
+                        model.academic_level_id,
+                        model.marital_status_id,
+                        model.province_of_birth_id,
+                        model.student_type_id,
+                        model.gender_id,
+                        model.id_issuance_place,
+                        model.category_id,
+                        model.payment_type_id
+                        );
 
-                    db.students.Add(stud);
-                    //db.SaveChanges();
-
-
-                    //Insert enrollment data
-                    payment paym = new payment()
-                    {
-                        id = model.payment_id,
-                        amount = model.amountToPay,
-                        date = DateTime.Now,
-                    };
-
-                    enrollment enroll = new enrollment()
-                    {
-                        category_id = model.category_id,
-                        payment_id = paym.id,
-                        payment_type_id = model.payment_type_id,
-                        student_id = stud.id
-                    };
-
-                    document doc = new document()
-                    {
-
-                    };
-
-                    //Insert documents.
-                    if (model.picture != null)
-                    {
-
-                    }
+                    return View();
                 }
+
+                //Insert student data:
+                student stud = new student()
+                {
+                    student_type_id = model.student_type_id,
+                    full_name = model.full_name,
+                    birth_date = model.birth_date,
+                    marital_status_id = model.marital_status_id,
+                    gender_id = model.gender_id,
+                    place_of_birth = model.place_of_birth,
+                    province_of_birth_id = model.province_of_birth_id,
+                    fathers_name = model.fathers_name,
+                    mothers_name = model.mothers_name,
+                    address = model.address,
+                    id_number = model.id_number,
+                    id_issuance_place = model.id_issuance_place,
+                    id_issuance_date = model.id_issuance_date,
+                    id_expiry_date = model.id_expiry_date,
+                    academic_level_id = model.academic_level_id,
+                    job_title = model.job_title,
+                    phone_number = model.phone_number,
+                    cell_phone1 = model.cell_phone1,
+                    cell_phone2 = model.cell_phone2,
+                    email = model.email,
+                    status_id=1
+                };
+
+                db.students.Add(stud);
+
+                //Insert documents:
+                List<document> docs = new List<document>();
+
+                if (model.picture != null)
+                {
+                    document picture = new document()
+                    {
+                        student_id = stud.id,
+                        document_type_id = 1,
+                        document_content = FileUtils.GetFileContent(model.picture)
+                    };
+
+                    docs.Add(picture);
+                }
+
+                if (model.IDCopy != null)
+                {
+                    document IDCopy = new document()
+                    {
+                        student_id = stud.id,
+                        document_type_id = 2,
+                        document_content = FileUtils.GetFileContent(model.IDCopy)
+                    };
+
+                    docs.Add(IDCopy);
+                }
+
+                if (model.medicalCertificate != null)
+                {
+                    document medicalCertificate = new document()
+                    {
+                        student_id = stud.id,
+                        document_type_id = 3,
+                        document_content = FileUtils.GetFileContent(model.medicalCertificate)
+                    };
+
+                    docs.Add(medicalCertificate);
+                }
+
+                if (model.militaryServiceStatement != null)
+                {
+                    document militaryServiceStatement = new document()
+                    {
+                        student_id = stud.id,
+                        document_type_id = 4,
+                        document_content = FileUtils.GetFileContent(model.militaryServiceStatement)
+                    };
+
+                    docs.Add(militaryServiceStatement);
+                }
+
+                if (model.criminalRecordCertificate != null)
+                {
+                    document criminalRecordCertificate = new document()
+                    {
+                        student_id = stud.id,
+                        document_type_id = 5,
+                        document_content = FileUtils.GetFileContent(model.criminalRecordCertificate)
+                    };
+
+                    docs.Add(criminalRecordCertificate);
+                }
+
+                if (docs.Count > 0)
+                {
+                    db.documents.AddRange(docs);
+                }
+
+                //Insert payment and enrollment data:
+                payment paym = new payment()
+                {
+                    id = model.payment_id,
+                    amount = model.amountToPay,
+                    date = DateTime.Now,
+                    user_id = LoginUtils.GetLoggedUserID()
+                };
+
+                //If is not full bursary, add the payment:
+                if (model.student_type_id != 2)
+                {
+                    db.payments.Add(paym);
+                }
+
+                //For partial payment
+                if (model.payment_type_id == 2)
+                {
+
+                }
+
+                switch (model.payment_type_id)
+                {
+                    case 1:
+                        break;
+
+                    default:
+                        break;
+                }
+
+                enrollment enroll = new enrollment()
+                {
+                    category_id = model.category_id,
+                    payment_id = paym.id,
+                    payment_type_id = model.payment_type_id,
+                    student_id = stud.id,
+                    date = DateTime.Now,
+                    user_id = LoginUtils.GetLoggedUserID()
+
+                };
+
+                db.enrollments.Add(enroll);
+
+                //Save all changes
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            //BindDropdownsOnUpdate(student);
+
+            BindDropdownsOnPostView(
+                model.academic_level_id,
+                model.marital_status_id,
+                model.province_of_birth_id,
+                model.student_type_id,
+                model.gender_id,
+                model.id_issuance_place,
+                model.category_id,
+                model.payment_type_id
+                );
 
             return View();
         }
@@ -187,97 +324,63 @@ namespace VenturaITC.DSMS.Controllers
             base.Dispose(disposing);
         }
 
-        private void BindDropdownsOnCreate()
-        {
-            ViewBag.academic_level_id = new SelectList(db.academic_level, "id", "name");
-            ViewBag.marital_status_id = new SelectList(db.marital_status, "id", "name");
-            ViewBag.province_of_birth_id = new SelectList(db.provinces, "id", "name");
-            ViewBag.status_id = new SelectList(db.status, "id", "name");
-            ViewBag.student_type_id = new SelectList(db.student_type, "id", "name");
-            ViewBag.gender_id = new SelectList(db.genders, "id", "name");
-            ViewBag.id_issuance_place = new SelectList(db.provinces, "id", "name");
-
-            //For enrollment data
-            ViewBag.category_id = new SelectList(db.categories, "id", "name");
-            ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name");
-        }
-
-        private void BindDropdownsOnUpdate(StudentEnrolmentViewModel student)
-        {
-            ViewBag.academic_level_id = new SelectList(db.academic_level, "id", "name", student.academic_level_id);
-            ViewBag.marital_status_id = new SelectList(db.marital_status, "id", "name", student.marital_status_id);
-            ViewBag.province_of_birth_id = new SelectList(db.provinces, "id", "name", student.province_of_birth_id);
-            // ViewBag.status_id = new SelectList(db.status, "id", "name", student.status_id);
-            ViewBag.student_type_id = new SelectList(db.student_type, "id", "name", student.student_type_id);
-            ViewBag.gender_id = new SelectList(db.genders, "id", "name", student.gender_id);
-            ViewBag.id_issuance_place = new SelectList(db.provinces, "id", "name", student.id_issuance_place);
-
-            //For enrollment data
-            ViewBag.category_id = new SelectList(db.categories, "id", "name", student.category_id);
-            ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name", student.payment_type_id);
-        }
-
         /// <summary>
-        /// Gets the Category cost.
+        /// Binds the dropdowns on the Get view method.
         /// </summary>
-        /// <param name="categoryID">The category ID.</param>
-        /// <returns>The cost of the give Category's ID.</returns>
-        [HttpGet]
-        public JsonResult GetCategoryCost(int categoryID)
+        private void BindDropdownsOnGetView()
         {
             try
             {
-                using (dsmsEntities db = new dsmsEntities())
-                {
-                    category categ = db.categories.Find(categoryID);
-                    return Json(new { categoryCost = categ.cost.ToString("N2") }, JsonRequestBehavior.AllowGet);
-                }
+                ViewBag.academic_level_id = new SelectList(db.academic_level, "id", "name");
+                ViewBag.marital_status_id = new SelectList(db.marital_status, "id", "name");
+                ViewBag.province_of_birth_id = new SelectList(db.provinces, "id", "name");
+                ViewBag.status_id = new SelectList(db.status, "id", "name");
+                ViewBag.student_type_id = new SelectList(db.student_type, "id", "name");
+                ViewBag.gender_id = new SelectList(db.genders, "id", "name");
+                ViewBag.id_issuance_place = new SelectList(db.provinces, "id", "name");
+                ViewBag.category_id = new SelectList(db.categories, "id", "name");
+                ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+
+                throw;
             }
         }
 
+
         /// <summary>
-        /// Gets the Category cost.
+        ///  Binds the dropdowns on the Post view method.
         /// </summary>
-        /// <param name="categoryID">The category ID.</param>
-        /// <returns>The cost of the give Category's ID.</returns>
-        [HttpGet]
-        public JsonResult GetPaymentData(int categoryID, int paymentTypeID)
+        /// <param name="st">The student model</param>
+        /// <param name="category_id">The CategoryID.</param>
+        /// <param name="payment_type_id">The payment type ID.</param>
+        private void BindDropdownsOnPostView(
+            int academic_level_id,
+            int marital_status_id,
+            int province_of_birth_id,
+            int student_type_id,
+            int gender_id,
+            int id_issuance_place,
+            int category_id,
+            int payment_type_id)
         {
             try
             {
-                using (dsmsEntities db = new dsmsEntities())
-                {
-                    category categ = db.categories.Find(categoryID);
-                    decimal percent = db.installments.Find(1).percentage;
-
-                    switch (paymentTypeID)
-                    {
-                        case 2:
-                            return Json(new
-                            {
-                                //TODO: check for easy way to get value's percentage
-                                minimumAmount = (categ.cost * percent / 100).ToString("N2"),
-                                amountToPay = (categ.cost * percent / 100).ToString("N2")
-                            }, JsonRequestBehavior.AllowGet);
-
-
-                        default:
-                            return Json(new
-                            {
-                                minimumAmount = categ.cost.ToString("N2"),
-                                amountToPay = categ.cost.ToString("N2")
-                            }, JsonRequestBehavior.AllowGet);
-                    }
-                }
+                ViewBag.academic_level_id = new SelectList(db.academic_level, "id", "name", academic_level_id);
+                ViewBag.marital_status_id = new SelectList(db.marital_status, "id", "name", marital_status_id);
+                ViewBag.province_of_birth_id = new SelectList(db.provinces, "id", "name", province_of_birth_id);
+                ViewBag.student_type_id = new SelectList(db.student_type, "id", "name", student_type_id);
+                ViewBag.gender_id = new SelectList(db.genders, "id", "name", gender_id);
+                ViewBag.id_issuance_place = new SelectList(db.provinces, "id", "name", id_issuance_place);
+                ViewBag.category_id = new SelectList(db.categories, "id", "name", category_id);
+                ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name", payment_type_id);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
+
         }
     }
 }

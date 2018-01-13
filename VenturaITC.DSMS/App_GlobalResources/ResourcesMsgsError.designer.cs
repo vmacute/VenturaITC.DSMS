@@ -68,5 +68,14 @@ namespace Resources {
                 return ResourceManager.GetString("AlreadyExistsUsername", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O valor a pagar não deve ser inferior ao valor mínimo..
+        /// </summary>
+        internal static string AmountToPayLess {
+            get {
+                return ResourceManager.GetString("AmountToPayLess", resourceCulture);
+            }
+        }
     }
 }

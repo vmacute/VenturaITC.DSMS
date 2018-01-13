@@ -25,9 +25,12 @@ namespace VenturaITC.DSMS.Models
         public int category_id { get; set; }
         public int payment_type_id { get; set; }
         public int payment_id { get; set; }
+        public System.DateTime date { get; set; }
         public int user_id { get; set; }
     
         public virtual category category { get; set; }
+        public virtual enrollment enrollment1 { get; set; }
+        public virtual enrollment enrollment2 { get; set; }
         public virtual payment payment { get; set; }
         public virtual payment_type payment_type { get; set; }
         public virtual student student { get; set; }

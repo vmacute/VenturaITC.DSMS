@@ -130,19 +130,18 @@
     <value>Pagamentos</value>
   </data>
   <data name="ModulePaymentsDesc" xml:space="preserve">
-    <value>Módulo de gestão de pagamentos.
-                    A modalidade de pagamento pode ser total ou em prestações.</value>
+    <value>Tenha a gestão de pagamentos facilitada.</value>
   </data>
   <data name="ModuleRegistration" xml:space="preserve">
     <value>Inscrições</value>
   </data>
   <data name="ModuleRegistrationDesc" xml:space="preserve">
-    <value>Módulo de inscrições e gestão de alunos, quer internos assim como externos.</value>
+    <value>Inscreva e faça a gestão dos seus alunos de forma fácil.</value>
   </data>
   <data name="ModuleTests" xml:space="preserve">
     <value>Testes</value>
   </data>
   <data name="ModuleTestsDesc" xml:space="preserve">
-    <value>Módulo de carregamento de exercícios, realização e gestão de testes.</value>
+    <value>Chega de gastar tanto papel e tinta. Através da aplicação poderá criar os testes e os alunos poderão realizá-los na mesma plataforma. Os resultados ficam disponíveis logo que o alunto termina o teste.</value>
   </data>
 </root>

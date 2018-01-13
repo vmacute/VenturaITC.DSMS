@@ -18,6 +18,7 @@ namespace VenturaITC.DSMS.Models
         public user()
         {
             this.enrollments = new HashSet<enrollment>();
+            this.payments = new HashSet<payment>();
         }
     
         public int id { get; set; }
@@ -41,6 +42,8 @@ namespace VenturaITC.DSMS.Models
         public virtual db_data_status db_data_status { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<enrollment> enrollments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<payment> payments { get; set; }
         public virtual user_role user_role { get; set; }
     }
 }
