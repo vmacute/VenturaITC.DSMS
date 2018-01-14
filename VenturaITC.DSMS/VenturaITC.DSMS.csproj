@@ -60,6 +60,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -129,6 +133,11 @@
   <ItemGroup>
     <Compile Include="App_GlobalResources\ResourcesButtons.designer.cs">
       <DependentUpon>ResourcesButtons.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\ResourcesLinks.designer.cs">
+      <DependentUpon>ResourcesLinks.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -519,6 +528,10 @@
     <Content Include="App_GlobalResources\ResourcesButtons.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>ResourcesButtons.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ResourcesLinks.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ResourcesLinks.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>

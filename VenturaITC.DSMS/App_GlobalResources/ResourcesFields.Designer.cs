@@ -268,6 +268,15 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Documentos.
+        /// </summary>
+        public static string Documents {
+            get {
+                return ResourceManager.GetString("Documents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to -Seleccionar-.
         /// </summary>
         public static string DropdownOptionLabel {
@@ -309,6 +318,15 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         public static string English {
             get {
                 return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data de Inscrição.
+        /// </summary>
+        public static string EnrollmentDate {
+            get {
+                return ResourceManager.GetString("EnrollmentDate", resourceCulture);
             }
         }
         

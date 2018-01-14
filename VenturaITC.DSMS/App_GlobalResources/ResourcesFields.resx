@@ -432,4 +432,10 @@
   <data name="PictureInvalidFormat" xml:space="preserve">
     <value>Formato inválido! Formatos permitidos: jpg, jpeg e png.</value>
   </data>
+  <data name="EnrollmentDate" xml:space="preserve">
+    <value>Data de Inscrição</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>Documentos</value>
+  </data>
 </root>

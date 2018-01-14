@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Net;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
+using VenturaITC.DB.Repository.Class;
 using VenturaITC.DSMS.Models;
 using VenturaITC.DSMS.Utils;
 using VenturaITC.DSMS.ViewModels;
@@ -26,14 +30,82 @@ namespace VenturaITC.DSMS.Controllers
     {
         private _dsmsEntities db = new _dsmsEntities();
 
+
+        /// <summary>
+        /// Gets the list of students enrollment view model.
+        /// </summary>
+        /// <returns>The list of students enrollment view model.</returns>
+        private List<StudentEnrolmentViewModel> GetStudentEnrolmentViewModelList()
+        {
+            List<StudentEnrolmentViewModel> studentsModels = new List<StudentEnrolmentViewModel>();
+
+            try
+            {
+                List<student> studentList = db.students.ToList();
+
+                foreach (var student in studentList)
+                {
+                    StudentEnrolmentViewModel studentModel = new StudentEnrolmentViewModel
+                    {
+                        student_id = student.id,
+                        full_name = student.full_name,                                                
+                        student_type_name = GetItemDescription("student_type",student.student_type_id),
+                        category_name = GetItemDescription("categories", 1)
+                    };
+
+                    studentsModels.Add(studentModel);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return studentsModels;
+
+        }
+
+        /// <summary>
+        /// Gets the description of a table item.
+        /// </summary>
+        /// <param name="tableEntry">The table entry.</param>
+        /// <param name="id">The item ID.</param>
+        /// <returns>The description of the specified item ID.</returns>
+        private string GetItemDescription(string tableEntry, int itemID)
+        {
+            try
+            {
+                PropertyInfo info = db.GetType().GetProperty(tableEntry);
+                IQueryable table = info.GetValue(db, null) as IQueryable;
+
+                IQueryable query = table.AsQueryable().Where("id == @0", itemID);
+
+                foreach (var item in query)
+                {
+                    //In this case, we just return the property value of the first element.
+                    return item.GetType().GetProperty("name").GetValue(item, null).ToString();
+                }
+       
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return null;
+        }
+
+
+
         /// <summary>
         /// Gets the Index view.
         /// </summary>
         /// <returns>The Index view.</returns>
         public ActionResult Index()
-        {
-            var students = db.students.Include(s => s.academic_level).Include(s => s.gender).Include(s => s.marital_status).Include(s => s.province).Include(s => s.province1).Include(s => s.status).Include(s => s.student_type);
-            return View(students.ToList());
+        {          
+            return View(GetStudentEnrolmentViewModelList());
         }
 
         /// <summary>
@@ -120,7 +192,7 @@ namespace VenturaITC.DSMS.Controllers
                     cell_phone1 = model.cell_phone1,
                     cell_phone2 = model.cell_phone2,
                     email = model.email,
-                    status_id=1
+                    status_id = 1
                 };
 
                 db.students.Add(stud);
@@ -217,18 +289,18 @@ namespace VenturaITC.DSMS.Controllers
                     date = DateTime.Now,
                     user_id = LoginUtils.GetLoggedUserID()
                 };
-                
+
                 //For partial payment
                 if (model.payment_type_id == 2)
                 {
                     payment_installment paymInstall = new payment_installment()
                     {
                         payment_id = paym.id,
-                        installment_id=1,                      
-                        enrollment_id=enroll.id                    
+                        installment_id = 1,
+                        enrollment_id = enroll.id
                     };
                 }
-    
+
                 db.enrollments.Add(enroll);
 
                 //Save all changes

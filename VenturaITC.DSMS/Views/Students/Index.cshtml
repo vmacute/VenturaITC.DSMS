@@ -1,163 +1,61 @@
-﻿@model IEnumerable<VenturaITC.DSMS.Models.student>
+﻿@model IEnumerable<VenturaITC.DSMS.ViewModels.StudentEnrolmentViewModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>@Resources.ResourcesTitles.StudentList</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(@Resources.ResourcesLinks.NewEnrollment, "Create")
 </p>
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.student_id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.full_name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.first_name)
+            @Html.DisplayNameFor(model => model.student_type_id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.last_name)
+            @Html.DisplayNameFor(model => model.category_id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.birth_date)
+            @Html.DisplayNameFor(model => model.enrollmentDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.gender_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.place_of_birth)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fathers_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mothers_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.id_number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.id_issuance_place)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.id_issuance_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.id_expiry_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.job_title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.phone_number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cell_phone1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cell_phone2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.academic_level.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.marital_status.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.province.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.status.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.student_type.name)
-        </th>
+            @Html.DisplayNameFor(model => model.documents)
+        </th>       
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.student_id)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.full_name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.first_name)
+            @Html.DisplayFor(modelItem => item.student_type_name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.last_name)
+            @Html.DisplayFor(modelItem => item.category_name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.birth_date)
+            @Html.DisplayFor(modelItem => item.enrollmentDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.gender_id)
+            @*@Html.DisplayFor(modelItem => item.documents)*@
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.place_of_birth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fathers_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mothers_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_issuance_place)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_issuance_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_expiry_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.job_title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phone_number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cell_phone1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cell_phone2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.academic_level.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.marital_status.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.province.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.student_type.name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.number }) |
-            @Html.ActionLink("Details", "Details", new { id=item.number }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.number })
+            @Html.ActionLink(@Resources.ResourcesLinks.Edit, "Edit", new { id=item.student_id }) |
+            @Html.ActionLink(@Resources.ResourcesLinks.Details, "Details", new { id=item.student_id }) |
+            @Html.ActionLink(@Resources.ResourcesLinks.Delete, "Delete", new { id=item.student_id })
         </td>
     </tr>
 }

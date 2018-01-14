@@ -117,34 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="UserCreate" xml:space="preserve">
-    <value>Novo Utilizador</value>
+  <data name="BackToList" xml:space="preserve">
+    <value>Voltar à Lista</value>
   </data>
-  <data name="UserDelete" xml:space="preserve">
-    <value>Eliminar Utilizador</value>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Criar Novo</value>
   </data>
-  <data name="UserEdit" xml:space="preserve">
-    <value>Editar Utilizador</value>
+  <data name="Delete" xml:space="preserve">
+    <value>Eliminar</value>
   </data>
-  <data name="UserList" xml:space="preserve">
-    <value>Lista de Utilizadores</value>
+  <data name="Details" xml:space="preserve">
+    <value>Detalhes</value>
   </data>
-  <data name="StudentEnrollment" xml:space="preserve">
-    <value>Inscrição de Aluno</value>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
   </data>
-  <data name="StudentData" xml:space="preserve">
-    <value>Dados do Aluno</value>
-  </data>
-  <data name="CategoryAndPayment" xml:space="preserve">
-    <value>Tipo de Carta e Pagamento</value>
-  </data>
-  <data name="Documents" xml:space="preserve">
-    <value>Documentos</value>
-  </data>
-  <data name="StudentDetails" xml:space="preserve">
-    <value>Detalhes do Aluno</value>
-  </data>
-  <data name="StudentList" xml:space="preserve">
-    <value>Lista de Alunos</value>
+  <data name="NewEnrollment" xml:space="preserve">
+    <value>Nova Inscrição</value>
   </data>
 </root>

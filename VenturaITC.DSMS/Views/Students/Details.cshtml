@@ -1,14 +1,14 @@
-﻿@model VenturaITC.DSMS.Models.student
+﻿@model VenturaITC.DSMS.ViewModels.StudentEnrolmentViewModel
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Resources.ResourcesTitles.StudentDetails</h2>
+<hr />
 
-<div>
-    <h4>student</h4>
-    <hr />
+<div>    
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.full_name)

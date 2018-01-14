@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using VenturaITC.DSMS.App_GlobalResources;
 using VenturaITC.DSMS.Models;
 
@@ -11,9 +12,14 @@ namespace VenturaITC.DSMS.ViewModels
     public class StudentEnrolmentViewModel
     {
         #region StudentData
+        [Display(Name = "StudentNumber", ResourceType = typeof(ResourcesFields))]
+        public int student_id { get; set; }
+
         [Display(Name = "StudentType", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "StudentTypeRequired")]
         public int student_type_id { get; set; }
+
+        public string student_type_name { get; set; }
 
         [Display(Name = "FullName", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "FullNameRequired")]
@@ -107,6 +113,8 @@ namespace VenturaITC.DSMS.ViewModels
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "CategoryRequired")]
         public int category_id { get; set; }
 
+        public string category_name { get; set; }
+
         [Display(Name = "PaymentType", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PaymentTypeRequired")]
         public int payment_type_id { get; set; }
@@ -124,6 +132,15 @@ namespace VenturaITC.DSMS.ViewModels
         [Display(Name = "AmountToPay", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "AmountToPayRequired")]
         public decimal amountToPay { get; set; }
+
+        [Display(Name = "EnrollmentDate", ResourceType = typeof(ResourcesFields))]
+        public DateTime enrollmentDate { get; set; }
+
+        [Display(Name = "Username", ResourceType = typeof(ResourcesFields))]
+        public string username { get; set; }
+
+        [Display(Name = "Documents", ResourceType = typeof(ResourcesFields))]
+        public List<SelectListItem> documents { get; set; }
         #endregion
 
         #region Documents

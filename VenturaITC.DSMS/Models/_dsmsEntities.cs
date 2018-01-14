@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
@@ -20,6 +21,12 @@ namespace VenturaITC.DSMS.Models
     /// </history>
     public class _dsmsEntities : dsmsEntities
     {
+        public DbSet Set(string tableName)
+        {
+            // you may need to fill in the namespace of your context
+            return base.Set(Type.GetType(tableName));
+        }
+
         /// <summary>
         /// Overriding the base.SaveChanges() so that we can intercept the EntityValidationErrors.
         /// </summary>
