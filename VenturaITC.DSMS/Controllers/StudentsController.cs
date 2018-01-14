@@ -208,21 +208,6 @@ namespace VenturaITC.DSMS.Controllers
                     db.payments.Add(paym);
                 }
 
-                //For partial payment
-                if (model.payment_type_id == 2)
-                {
-
-                }
-
-                switch (model.payment_type_id)
-                {
-                    case 1:
-                        break;
-
-                    default:
-                        break;
-                }
-
                 enrollment enroll = new enrollment()
                 {
                     category_id = model.category_id,
@@ -231,9 +216,19 @@ namespace VenturaITC.DSMS.Controllers
                     student_id = stud.id,
                     date = DateTime.Now,
                     user_id = LoginUtils.GetLoggedUserID()
-
                 };
-
+                
+                //For partial payment
+                if (model.payment_type_id == 2)
+                {
+                    payment_installment paymInstall = new payment_installment()
+                    {
+                        payment_id = paym.id,
+                        installment_id=1,                      
+                        enrollment_id=enroll.id                    
+                    };
+                }
+    
                 db.enrollments.Add(enroll);
 
                 //Save all changes

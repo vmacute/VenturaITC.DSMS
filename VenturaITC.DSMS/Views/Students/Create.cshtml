@@ -6,96 +6,111 @@
 
 @section scripts{
     <script>
+
         //On document.ready
         $(function () {
 
-        });
+            //Handles the student_type_id DropDownList change event.
+            $('#student_type_id').change(function () {
 
-        //Resets the payment fields.
-        function ResetPaymentFields() {
-            $('#payment_type_id').prop('disabled', false);
-            $('#amountToPay').prop('disabled', false);
-            $('#payment_id').prop('disabled', false);
+                var typeID = $('#student_type_id').val();
 
-            $('#payment_type_id').val('');
-            $('#minimumAmount').val('');
-            $('#amountToPay').val('');
-            $('#payment_id').val('');
-        }
+                switch (typeID) {
+                    //Complete bursary:
+                    case "2":
+                        $('#payment_type_id').prop('disabled', true);
+                        $('#amountToPay').prop('disabled', true);
+                        $('#payment_id').prop('disabled', true);
 
-        //Handles the student_type_id DropDownList change event.
-        $('#student_type_id').change(function () {
+                        $('#payment_type_id').val("1");
+                        $('#minimumAmount').val("0");
+                        $('#amountToPay').val("0");
+                        $('#payment_id').val("0");
+                        break;
 
-            var typeID = $('#student_type_id').val();
+                        //Partial bursary:
+                    case "3":
+                        if ($('#category_id').val() != '') {
+                            $('#payment_type_id').prop('disabled', false);
+                        } else {
+                            $('#payment_type_id').prop('disabled', true);
+                        }
 
-            switch (typeID) {
-                //Complete bursary:
-                case "2":
-                    ResetPaymentFields();
+                        $('#minimumAmount').prop('disabled', true);
+                        $('#amountToPay').prop('disabled', false);
+                        $('#payment_id').prop('disabled', false);
+
+                        $('#payment_type_id').val('');
+                        $('#minimumAmount').val("0");
+                        $('#amountToPay').val('');
+                        $('#payment_id').val('');
+
+                        break;
+
+                        //Normal
+                    default:
+                        if ($('#category_id').val() != '') {
+                            $('#payment_type_id').prop('disabled', false);
+                        } else {
+                            $('#payment_type_id').prop('disabled', true);
+                        }
+
+                        $('#minimumAmount').prop('disabled', true);
+                        $('#amountToPay').prop('disabled', false);
+                        $('#payment_id').prop('disabled', false);
+
+                        $('#payment_type_id').val('');
+                        $('#minimumAmount').val('');
+                        $('#amountToPay').val('');
+                        $('#payment_id').val('');
+                        break;
+                }
+            });
+
+            //Handles the category_id DropDownList change event.
+            $('#category_id').change(function () {
+
+                var categoryID = $('#category_id').val();
+
+                if (categoryID != '') {
+                    $.getJSON("/PaymentUtils/GetCategoryCost", { categoryID: categoryID }, function (data) {
+
+                        if ($('#student_type_id').val() != "2") {
+                            $('#payment_type_id').prop('disabled', false);
+                        }
+
+                        $('#totalAmount').val(data.categoryCost);
+                    })
+                        .fail(function (data) {
+                            alert("An error ocurred: " + data.responseText);
+                        });
+                } else {
                     $('#payment_type_id').prop('disabled', true);
-                    $('#amountToPay').prop('disabled', true);
-                    $('#payment_id').prop('disabled', true);
+                    $('#totalAmount').val('');
+                }
+            });
 
-                    $('#payment_type_id').val("1");
-                    $('#minimumAmount').val("0,00");
-                    $('#amountToPay').val("0,00");
-                    $('#payment_id').val("0000");
-                    break;
+            //Handles the category_id DropDownList change event.
+            $('#payment_type_id').change(function () {
 
-                    //Partial bursary:
-                case "3":
-                    ResetPaymentFields();
-                    $('#minimumAmount').prop('disabled', true);
-                    $('#minimumAmount').val("0.00");
-                    break;
+                var typeID = $('#payment_type_id').val();
 
-                    //Normal
-                default:
-                    ResetPaymentFields();
-                    break;
-            }
+                if (typeID != '') {
+                    $.getJSON("/PaymentUtils/GetEnrollmentPaymentAmounts", { categoryID: $('#category_id').val(), paymentTypeID: typeID }, function (data) {
+                        $('#minimumAmount').val(data.minimumAmount);
+                        $('#amountToPay').val(data.amountToPay);
+                    })
+                        .fail(function (data) {
+                            alert("An error ocurred: " + data.responseText);
+                        });
+                } else {
+                    $('#minimumAmount').val('');
+                    $('#amountToPay').val('');
+                }
+            });
 
         });
 
-        //Handles the category_id DropDownList change event.
-        $('#category_id').change(function () {
-
-            var categoryID = $('#category_id').val();
-
-            if (categoryID != '') {
-                $.getJSON("/PaymentUtils/GetCategoryCost", { categoryID: categoryID }, function (data) {
-                    if ($('#student_type_id').val() != "2") {
-                        $('#payment_type_id').prop('disabled', false);
-                    }
-
-                    $('#totalAmount').val(data.categoryCost);
-                })
-                    .fail(function (data) {
-                        alert("An error ocurred: " + data.responseText);
-                    });
-            } else {
-                $('#payment_type_id').prop('disabled', true);
-                $('#totalAmount').val('');
-            }
-        });
-
-        $('#payment_type_id').change(function () {
-
-            var typeID = $('#payment_type_id').val();
-
-            if (typeID != '') {
-                $.getJSON("/PaymentUtils/GetEnrollmentPaymentAmounts", { categoryID: $('#category_id').val(), paymentTypeID: typeID }, function (data) {
-                    $('#minimumAmount').val(data.minimumAmount);
-                    $('#amountToPay').val(data.amountToPay);
-                })
-                    .fail(function (data) {
-                        alert("An error ocurred: " + data.responseText);
-                    });
-            } else {
-                $('#minimumAmount').val('');
-                $('#amountToPay').val('');
-            }
-        });
     </script>
 
 }
@@ -107,7 +122,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">     
+    <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <fieldset>
             <legend class="fieldset-legend">@Resources.ResourcesTitles.StudentData</legend>
