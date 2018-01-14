@@ -45,8 +45,6 @@ namespace VenturaITC.DSMS.Models
         public virtual DbSet<province> provinces { get; set; }
         public virtual DbSet<status> status { get; set; }
         public virtual DbSet<student> students { get; set; }
-        public virtual DbSet<student_enrollment> student_enrollment { get; set; }
-        public virtual DbSet<student_payment> student_payment { get; set; }
         public virtual DbSet<student_type> student_type { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<user> users { get; set; }

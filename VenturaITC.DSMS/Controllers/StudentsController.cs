@@ -35,7 +35,7 @@ namespace VenturaITC.DSMS.Controllers
         /// Gets the list of students enrollment view model.
         /// </summary>
         /// <returns>The list of students enrollment view model.</returns>
-        private List<StudentEnrolmentViewModel> GetStudentEnrolmentViewModelList()
+        private List<StudentEnrolmentViewModel> GetStudentEnrolmentViewModelList(int studentID = 0)
         {
             List<StudentEnrolmentViewModel> studentsModels = new List<StudentEnrolmentViewModel>();
 
@@ -43,27 +43,43 @@ namespace VenturaITC.DSMS.Controllers
             {
                 List<student> studentList = db.students.ToList();
 
+                if (studentID != 0)
+                {
+                    studentList = studentList.Where(m => m.id == studentID).ToList();
+                }
+
                 foreach (var student in studentList)
                 {
+                    student.documents.Where(m => m.student_id == 1);
+
+                    List<document_type> docTypes = new List<document_type>();
+
+                    foreach (var id in student.documents.Select(m => m.document_type_id).ToList())
+                    {
+                        docTypes.Add(db.document_type.Find(id));
+                    }
+
                     StudentEnrolmentViewModel studentModel = new StudentEnrolmentViewModel
                     {
                         student_id = student.id,
-                        full_name = student.full_name,                                                
-                        student_type_name = GetItemDescription("student_type",student.student_type_id),
-                        category_name = GetItemDescription("categories", 1)
+                        full_name = student.full_name,
+                        student_type_name = GetItemDescription("student_type", student.student_type.id)
+                      //  category_name = GetItemDescription("categories", student.enrollments.Where(m => m.student_id == student.id).First().id)
+                      //  documents = new SelectList(docTypes, "id", "name")
+
+
                     };
 
                     studentsModels.Add(studentModel);
                 }
+
+                return studentsModels;
             }
             catch (Exception)
             {
 
                 throw;
             }
-
-            return studentsModels;
-
         }
 
         /// <summary>
@@ -86,7 +102,7 @@ namespace VenturaITC.DSMS.Controllers
                     //In this case, we just return the property value of the first element.
                     return item.GetType().GetProperty("name").GetValue(item, null).ToString();
                 }
-       
+
             }
             catch (Exception)
             {
@@ -104,7 +120,7 @@ namespace VenturaITC.DSMS.Controllers
         /// </summary>
         /// <returns>The Index view.</returns>
         public ActionResult Index()
-        {          
+        {
             return View(GetStudentEnrolmentViewModelList());
         }
 
@@ -118,12 +134,8 @@ namespace VenturaITC.DSMS.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            student student = db.students.Find(id);
-            if (student == null)
-            {
-                return HttpNotFound();
-            }
-            return View(student);
+
+            return View(GetStudentEnrolmentViewModelList((int)id).First());
         }
 
         /// <summary>

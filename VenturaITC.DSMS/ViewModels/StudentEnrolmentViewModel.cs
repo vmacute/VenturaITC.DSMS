@@ -140,7 +140,7 @@ namespace VenturaITC.DSMS.ViewModels
         public string username { get; set; }
 
         [Display(Name = "Documents", ResourceType = typeof(ResourcesFields))]
-        public List<SelectListItem> documents { get; set; }
+        public SelectList documents { get; set; }
         #endregion
 
         #region Documents

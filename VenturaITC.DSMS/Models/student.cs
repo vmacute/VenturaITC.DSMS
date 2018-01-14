@@ -20,8 +20,6 @@ namespace VenturaITC.DSMS.Models
             this.documents = new HashSet<document>();
             this.documents1 = new HashSet<document>();
             this.enrollments = new HashSet<enrollment>();
-            this.student_payment = new HashSet<student_payment>();
-            this.student_enrollment = new HashSet<student_enrollment>();
         }
     
         public int id { get; set; }
@@ -60,9 +58,5 @@ namespace VenturaITC.DSMS.Models
         public virtual province province1 { get; set; }
         public virtual status status { get; set; }
         public virtual student_type student_type { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student_payment> student_payment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student_enrollment> student_enrollment { get; set; }
     }
 }

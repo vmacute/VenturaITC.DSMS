@@ -180,29 +180,6 @@
           <Property Name="email" Type="varchar" MaxLength="255" />
           <Property Name="status_id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="student_enrollment">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="student_number" Type="int" Nullable="false" />
-          <Property Name="category" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="enrollment_date" Type="datetime" Nullable="false" />
-          <Property Name="enrollment_user" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="student_payment">
-          <Key>
-            <PropertyRef Name="receipt_number" />
-          </Key>
-          <Property Name="receipt_number" Type="int" Nullable="false" />
-          <Property Name="student_number" Type="int" Nullable="false" />
-          <Property Name="installment_number" Type="int" />
-          <Property Name="amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="total_paid_amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="remaining_amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="date" Type="datetime" Nullable="false" />
-        </EntityType>
         <EntityType Name="student_type">
           <Key>
             <PropertyRef Name="id" />
@@ -489,30 +466,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_StudentPayment_Student">
-          <End Role="student" Type="Self.student" Multiplicity="1" />
-          <End Role="student_payment" Type="Self.student_payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="student">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="student_payment">
-              <PropertyRef Name="student_number" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentRegistration_Student">
-          <End Role="student" Type="Self.student" Multiplicity="1" />
-          <End Role="student_enrollment" Type="Self.student_enrollment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="student">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="student_enrollment">
-              <PropertyRef Name="student_number" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_DBDataStatus">
           <End Role="db_data_status" Type="Self.db_data_status" Multiplicity="1" />
           <End Role="user" Type="Self.user" Multiplicity="*" />
@@ -558,8 +511,6 @@
           <EntitySet Name="province" EntityType="Self.province" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="student_enrollment" EntityType="Self.student_enrollment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="student_payment" EntityType="Self.student_payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="student_type" EntityType="Self.student_type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
@@ -644,14 +595,6 @@
             <End Role="student" EntitySet="student" />
             <End Role="document" EntitySet="document" />
           </AssociationSet>
-          <AssociationSet Name="FK_StudentPayment_Student" Association="Self.FK_StudentPayment_Student">
-            <End Role="student" EntitySet="student" />
-            <End Role="student_payment" EntitySet="student_payment" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentRegistration_Student" Association="Self.FK_StudentRegistration_Student">
-            <End Role="student" EntitySet="student" />
-            <End Role="student_enrollment" EntitySet="student_enrollment" />
-          </AssociationSet>
           <AssociationSet Name="FK_User_DBDataStatus" Association="Self.FK_User_DBDataStatus">
             <End Role="db_data_status" EntitySet="db_data_status" />
             <End Role="user" EntitySet="user" />
@@ -686,8 +629,6 @@
           <EntitySet Name="provinces" EntityType="dsmsModel.province" />
           <EntitySet Name="status" EntityType="dsmsModel.status" />
           <EntitySet Name="students" EntityType="dsmsModel.student" />
-          <EntitySet Name="student_enrollment" EntityType="dsmsModel.student_enrollment" />
-          <EntitySet Name="student_payment" EntityType="dsmsModel.student_payment" />
           <EntitySet Name="student_type" EntityType="dsmsModel.student_type" />
           <EntitySet Name="sysdiagrams" EntityType="dsmsModel.sysdiagram" />
           <EntitySet Name="users" EntityType="dsmsModel.user" />
@@ -775,14 +716,6 @@
           <AssociationSet Name="FK_student_student_type" Association="dsmsModel.FK_student_student_type">
             <End Role="student_type" EntitySet="student_type" />
             <End Role="student" EntitySet="students" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentPayment_Student" Association="dsmsModel.FK_StudentPayment_Student">
-            <End Role="student" EntitySet="students" />
-            <End Role="student_payment" EntitySet="student_payment" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentRegistration_Student" Association="dsmsModel.FK_StudentRegistration_Student">
-            <End Role="student" EntitySet="students" />
-            <End Role="student_enrollment" EntitySet="student_enrollment" />
           </AssociationSet>
           <AssociationSet Name="FK_User_UserRole" Association="dsmsModel.FK_User_UserRole">
             <End Role="user_role" EntitySet="user_role" />
@@ -1001,33 +934,6 @@
           <NavigationProperty Name="province1" Relationship="dsmsModel.FK_student_province1" FromRole="student" ToRole="province" />
           <NavigationProperty Name="status" Relationship="dsmsModel.FK_student_status" FromRole="student" ToRole="status" />
           <NavigationProperty Name="student_type" Relationship="dsmsModel.FK_student_student_type" FromRole="student" ToRole="student_type" />
-          <NavigationProperty Name="student_payment" Relationship="dsmsModel.FK_StudentPayment_Student" FromRole="student" ToRole="student_payment" />
-          <NavigationProperty Name="student_enrollment" Relationship="dsmsModel.FK_StudentRegistration_Student" FromRole="student" ToRole="student_enrollment" />
-        </EntityType>
-        <EntityType Name="student_enrollment">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="student_number" Type="Int32" Nullable="false" />
-          <Property Name="category" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="enrollment_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="enrollment_user" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="student" Relationship="dsmsModel.FK_StudentRegistration_Student" FromRole="student_enrollment" ToRole="student" />
-        </EntityType>
-        <EntityType Name="student_payment">
-          <Key>
-            <PropertyRef Name="receipt_number" />
-          </Key>
-          <Property Name="receipt_number" Type="Int32" Nullable="false" />
-          <Property Name="student_number" Type="Int32" Nullable="false" />
-          <Property Name="installment_number" Type="Int32" />
-          <Property Name="amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="total_paid_amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="remaining_amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="student" Relationship="dsmsModel.FK_StudentPayment_Student" FromRole="student_payment" ToRole="student" />
         </EntityType>
         <EntityType Name="student_type">
           <Key>
@@ -1333,30 +1239,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_StudentPayment_Student">
-          <End Type="dsmsModel.student" Role="student" Multiplicity="1" />
-          <End Type="dsmsModel.student_payment" Role="student_payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="student">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="student_payment">
-              <PropertyRef Name="student_number" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentRegistration_Student">
-          <End Type="dsmsModel.student" Role="student" Multiplicity="1" />
-          <End Type="dsmsModel.student_enrollment" Role="student_enrollment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="student">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="student_enrollment">
-              <PropertyRef Name="student_number" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_UserRole">
           <End Type="dsmsModel.user_role" Role="user_role" Multiplicity="1" />
           <End Type="dsmsModel.user" Role="user" Multiplicity="*" />
@@ -1566,31 +1448,6 @@
                 <ScalarProperty Name="full_name" ColumnName="full_name" />
                 <ScalarProperty Name="student_type_id" ColumnName="student_type_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="student_enrollment">
-            <EntityTypeMapping TypeName="dsmsModel.student_enrollment">
-              <MappingFragment StoreEntitySet="student_enrollment">
-                <ScalarProperty Name="enrollment_user" ColumnName="enrollment_user" />
-                <ScalarProperty Name="enrollment_date" ColumnName="enrollment_date" />
-                <ScalarProperty Name="category" ColumnName="category" />
-                <ScalarProperty Name="student_number" ColumnName="student_number" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="student_payment">
-            <EntityTypeMapping TypeName="dsmsModel.student_payment">
-              <MappingFragment StoreEntitySet="student_payment">
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="remaining_amount" ColumnName="remaining_amount" />
-                <ScalarProperty Name="total_paid_amount" ColumnName="total_paid_amount" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="installment_number" ColumnName="installment_number" />
-                <ScalarProperty Name="student_number" ColumnName="student_number" />
-                <ScalarProperty Name="receipt_number" ColumnName="receipt_number" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

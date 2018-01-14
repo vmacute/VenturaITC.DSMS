@@ -303,12 +303,6 @@
     <Compile Include="Models\student.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\student_enrollment.cs">
-      <DependentUpon>dsmsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\student_payment.cs">
-      <DependentUpon>dsmsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\student_type.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
