@@ -547,6 +547,24 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Estado da Carta.
+        /// </summary>
+        public static string LicenseStatus {
+            get {
+                return ResourceManager.GetString("LicenseStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo {0} é de preenchimento obrigatório..
+        /// </summary>
+        public static string LicenseStatusRequired {
+            get {
+                return ResourceManager.GetString("LicenseStatusRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bloqueiado.
         /// </summary>
         public static string Locked {

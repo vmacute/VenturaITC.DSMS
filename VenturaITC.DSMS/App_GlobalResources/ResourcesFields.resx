@@ -438,4 +438,10 @@
   <data name="Documents" xml:space="preserve">
     <value>Documentos</value>
   </data>
+  <data name="LicenseStatus" xml:space="preserve">
+    <value>Estado da Carta</value>
+  </data>
+  <data name="LicenseStatusRequired" xml:space="preserve">
+    <value>O campo {0} é de preenchimento obrigatório.</value>
+  </data>
 </root>

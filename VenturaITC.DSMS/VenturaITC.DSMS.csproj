@@ -208,13 +208,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\students1Controller.cs" />
     <Compile Include="Models\Enumeration.cs" />
     <Compile Include="Classes\Validator.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CultureController.cs" />
-    <Compile Include="Controllers\enrollmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\P.cs" />
     <Compile Include="Controllers\PaymentUtilsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -227,9 +226,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\academic_level.cs">
-      <DependentUpon>dsmsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\category.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\db_data_status.cs">
@@ -271,6 +267,12 @@
     <Compile Include="Models\installment.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\licence_status.cs">
+      <DependentUpon>dsmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\license.cs">
+      <DependentUpon>dsmsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\marital_status.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
@@ -301,6 +303,9 @@
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\student.cs">
+      <DependentUpon>dsmsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\student_license_status.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\student_type.cs">
@@ -424,20 +429,9 @@
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
-    <Content Include="Views\students1\Create.cshtml" />
-    <Content Include="Views\students1\Delete.cshtml" />
-    <Content Include="Views\students1\Details.cshtml" />
-    <Content Include="Views\students1\Edit.cshtml" />
-    <Content Include="Views\students1\Index.cshtml" />
-    <Content Include="Views\enrollments\Create.cshtml" />
-    <Content Include="Views\enrollments\Delete.cshtml" />
-    <Content Include="Views\enrollments\Details.cshtml" />
-    <Content Include="Views\enrollments\Edit.cshtml" />
-    <Content Include="Views\enrollments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Payments\" />
     <Folder Include="Views\Utils\" />
   </ItemGroup>
   <ItemGroup>

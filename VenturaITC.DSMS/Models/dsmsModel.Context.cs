@@ -26,7 +26,6 @@ namespace VenturaITC.DSMS.Models
         }
     
         public virtual DbSet<academic_level> academic_level { get; set; }
-        public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<db_data_status> db_data_status { get; set; }
         public virtual DbSet<document> documents { get; set; }
         public virtual DbSet<document_type> document_type { get; set; }
@@ -35,6 +34,8 @@ namespace VenturaITC.DSMS.Models
         public virtual DbSet<holiday> holidays { get; set; }
         public virtual DbSet<id_issuance_place> id_issuance_place { get; set; }
         public virtual DbSet<installment> installments { get; set; }
+        public virtual DbSet<licence_status> licence_status { get; set; }
+        public virtual DbSet<license> licenses { get; set; }
         public virtual DbSet<marital_status> marital_status { get; set; }
         public virtual DbSet<parameterization> parameterizations { get; set; }
         public virtual DbSet<parameterization_bool> parameterization_bool { get; set; }
@@ -45,6 +46,7 @@ namespace VenturaITC.DSMS.Models
         public virtual DbSet<province> provinces { get; set; }
         public virtual DbSet<status> status { get; set; }
         public virtual DbSet<student> students { get; set; }
+        public virtual DbSet<student_license_status> student_license_status { get; set; }
         public virtual DbSet<student_type> student_type { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<user> users { get; set; }

@@ -1,201 +1,225 @@
 ﻿@model VenturaITC.DSMS.ViewModels.StudentEnrolmentViewModel
+@using VenturaITC.DSMS.Utils
 
 @{
     ViewBag.Title = "Details";
+
+    string pictureSrc = "/Images/user.png";
+
+    if (Model.pictureContent != null)
+    {
+        pictureSrc = FileUtils.GetImageSource(Model.pictureContent);
+    }
+
 }
 
 <h2>@Resources.ResourcesTitles.StudentDetails</h2>
 <hr />
 
-<div>    
+<div>
+    <fieldset>
+        <legend class="fieldset-legend">@Resources.ResourcesTitles.StudentData</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.student_id)
+                    </dt>
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.student_id)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.student_id)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.student_id)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.full_name)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.full_name)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.full_name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.student_type_id)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.full_name)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.student_type_name)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.student_type_id)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.birth_date)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.student_type_name)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.birth_date)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.category_id)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.place_of_birth)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.category_name)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.place_of_birth)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.enrollmentDate)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.province_of_birth_id)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.enrollmentDate)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.province_of_birth_name)
+                    </dd>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.place_of_birth)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.fathers_name)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.place_of_birth)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.fathers_name)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.fathers_name)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.mothers_name)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.fathers_name)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.mothers_name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.gender_id)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.mothers_name)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.gender_name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.address)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.mothers_name)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.address)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.address)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.id_number)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.address)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.id_number)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.id_number)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.id_issuance_province)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.id_number)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.id_issuance_province_name)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.id_issuance_place)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.id_issuance_date)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.id_issuance_place)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.id_issuance_date)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.id_issuance_date)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.id_expiry_date)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.id_issuance_date)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.id_expiry_date)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.id_expiry_date)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.academic_level_id)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.id_expiry_date)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.academic_level_name)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.job_title)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.job_title)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.job_title)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.job_title)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.phone_number)
-        </dt>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <img src="@pictureSrc" Width="160" Height="160" class="rounded-circle" />
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="fieldset-legend">@Resources.ResourcesTitles.CategoryInfo</legend>
+        <dl class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.phone_number)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.license_id)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.cell_phone1)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.license_name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.enrollmentDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.cell_phone1)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.enrollmentDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.username)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.cell_phone2)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.username)
+            </dd>
+        </dl>
+    </fieldset>
 
-        <dd>
-            @Html.DisplayFor(model => model.cell_phone2)
-        </dd>
+    <fieldset>
+        <legend class="fieldset-legend">@Resources.ResourcesTitles.Contacts</legend>
+        <dl class="dl-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.phone_number)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.phone_number)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.cell_phone1)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.academic_level.name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.cell_phone1)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.cell_phone2)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.academic_level.name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.cell_phone2)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.marital_status.name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.marital_status.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.province.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.province.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.status.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.status.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.student_type.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.student_type.name)
-        </dd>*@
-
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+        </dl>
+    </fieldset>
 </div>
+
+
 <p>
     @Html.ActionLink(@Resources.ResourcesLinks.Edit, "Edit", new { id = Model.student_id }) |
     @Html.ActionLink(@Resources.ResourcesLinks.BackToList, "Index")

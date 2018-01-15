@@ -30,7 +30,7 @@
 
                         //Partial bursary:
                     case "3":
-                        if ($('#category_id').val() != '') {
+                        if ($('#license_id').val() != '') {
                             $('#payment_type_id').prop('disabled', false);
                         } else {
                             $('#payment_type_id').prop('disabled', true);
@@ -49,7 +49,7 @@
 
                         //Normal
                     default:
-                        if ($('#category_id').val() != '') {
+                        if ($('#license_id').val() != '') {
                             $('#payment_type_id').prop('disabled', false);
                         } else {
                             $('#payment_type_id').prop('disabled', true);
@@ -67,10 +67,10 @@
                 }
             });
 
-            //Handles the category_id DropDownList change event.
-            $('#category_id').change(function () {
+            //Handles the license_id DropDownList change event.
+            $('#license_id').change(function () {
 
-                var categoryID = $('#category_id').val();
+                var categoryID = $('#license_id').val();
 
                 if (categoryID != '') {
                     $.getJSON("/PaymentUtils/GetCategoryCost", { categoryID: categoryID }, function (data) {
@@ -90,13 +90,13 @@
                 }
             });
 
-            //Handles the category_id DropDownList change event.
+            //Handles the license_id DropDownList change event.
             $('#payment_type_id').change(function () {
 
                 var typeID = $('#payment_type_id').val();
 
                 if (typeID != '') {
-                    $.getJSON("/PaymentUtils/GetEnrollmentPaymentAmounts", { categoryID: $('#category_id').val(), paymentTypeID: typeID }, function (data) {
+                    $.getJSON("/PaymentUtils/GetEnrollmentPaymentAmounts", { categoryID: $('#license_id').val(), paymentTypeID: typeID }, function (data) {
                         $('#minimumAmount').val(data.minimumAmount);
                         $('#amountToPay').val(data.amountToPay);
                     })
@@ -337,10 +337,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group required">
-                        @Html.LabelFor(model => model.category_id, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.license_id, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.DropDownListFor(model => model.category_id, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.category_id, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(model => model.license_id, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.license_id, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>

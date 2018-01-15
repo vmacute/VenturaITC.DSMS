@@ -57,7 +57,7 @@ namespace VenturaITC.DSMS.ViewModels
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDIssuancePlaceRequired")]
         public int id_issuance_province { get; set; }
 
-        public string id_issuance_place_name { get; set; }
+        public string id_issuance_province_name { get; set; }
 
         [Display(Name = "IDIssuanceDate", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDIssuanceDateRequired")]
@@ -121,9 +121,15 @@ namespace VenturaITC.DSMS.ViewModels
         #region EnrollmentData
         [Display(Name = "Category", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "CategoryRequired")]
-        public int category_id { get; set; }
+        public int license_id { get; set; }
 
-        public string category_name { get; set; }
+        public string license_name { get; set; }
+
+        [Display(Name = "LicenseStatus", ResourceType = typeof(ResourcesFields))]
+        [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "LicenseStatusRequired")]
+        public int license_status_id { get; set; }
+
+        public string license_status_name { get; set; }
 
         [Display(Name = "PaymentType", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PaymentTypeRequired")]

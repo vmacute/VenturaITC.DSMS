@@ -33,8 +33,8 @@ namespace VenturaITC.DSMS.Controllers
             {
                 using (dsmsEntities db = new dsmsEntities())
                 {
-                    category categ = db.categories.Find(categoryID);
-                    return Json(new { categoryCost = categ.cost.ToString(numberFormatting) }, JsonRequestBehavior.AllowGet);
+                    license licens = db.licenses.Find(categoryID);
+                    return Json(new { categoryCost = licens.cost.ToString(numberFormatting) }, JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception ex)
@@ -46,37 +46,37 @@ namespace VenturaITC.DSMS.Controllers
         /// <summary>
         /// Gets the enrollment payment amounts.
         /// </summary>
-        /// <param name="categoryID">The Category ID.</param>
-        /// <param name="paymentTypeID">The Payment Type ID.</param>
+        /// <param name="licenseId">The license id.</param>
+        /// <param name="paymentTypeId">The Payment Type ID.</param>
         /// <returns>The minimum and the total payment amount for the enrollment process.</returns>
         [HttpGet]
-        public JsonResult GetEnrollmentPaymentAmounts(int categoryID, int paymentTypeID)
+        public JsonResult GetEnrollmentPaymentAmounts(int licenseId, int paymentTypeId)
         {
             try
             {
                 using (dsmsEntities db = new dsmsEntities())
                 {
-                    category categ = db.categories.Find(categoryID);
+                    license lic = db.licenses.Find(licenseId);
 
                     //Get the percentage of the first installment.
                     decimal percent = db.installments.Find(1).percentage;
 
-                    switch (paymentTypeID)
+                    switch (paymentTypeId)
                     {
                         case 2:
                             return Json(new
                             {
                                 //TODO: check for easy way to get value's percentage
-                                minimumAmount = (categ.cost * percent / 100).ToString(numberFormatting),
-                                amountToPay = (categ.cost * percent / 100).ToString(numberFormatting)
+                                minimumAmount = (lic.cost * percent / 100).ToString(numberFormatting),
+                                amountToPay = (lic.cost * percent / 100).ToString(numberFormatting)
                             }, JsonRequestBehavior.AllowGet);
 
 
                         default:
                             return Json(new
                             {
-                                minimumAmount = categ.cost.ToString(numberFormatting),
-                                amountToPay = categ.cost.ToString(numberFormatting)
+                                minimumAmount = lic.cost.ToString(numberFormatting),
+                                amountToPay = lic.cost.ToString(numberFormatting)
                             }, JsonRequestBehavior.AllowGet);
                     }
                 }

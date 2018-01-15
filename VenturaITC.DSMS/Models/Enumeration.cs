@@ -20,14 +20,15 @@ namespace VenturaITC.DSMS.Models
         }
 
         /// <summary>
-        /// Alert warnig types
+        /// Driving license statuses
         /// </summary>
-        public enum WarningType
+        public enum LicenseStatus
         {
-            Success,
-            Info,
-            Warning,
-            Danger
+            Theory = 1,
+            Practisis = 2,
+            TheoricExam = 3,
+            PractisisExam = 4,
+            Finished = 5
         }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace VenturaITC.DSMS.Models
         {
             Picture = 1,
             IDCopy = 2,
-            MedicalCertificate=3,
+            MedicalCertificate = 3,
             CriminalRecordCertificate = 4,
             MilitaryServiceStatement = 5
         }

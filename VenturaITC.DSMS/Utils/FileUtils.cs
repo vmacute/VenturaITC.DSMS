@@ -32,5 +32,21 @@ namespace VenturaITC.DSMS.Utils
                 return fileBytes;
             }
         }
+
+        /// <summary>
+        /// Gets the source of an image.
+        /// </summary>
+        /// <param name="imageContent">The byte[] containing the images's content</param>
+        /// <returns>The specified image source.</returns>
+        public static string GetImageSource(byte[] imageContent)
+        {
+            if (imageContent != null)
+            {
+                return String.Format("data:image;png;base64,{0}", Convert.ToBase64String(imageContent));
+            }
+
+            return null;
+        }
     }
 }
+

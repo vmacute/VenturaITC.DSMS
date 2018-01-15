@@ -69,7 +69,7 @@ namespace VenturaITC.DSMS.Controllers
                         address = student.address,
                         id_number = student.id_number,
                         id_issuance_province = student.id_issuance_province,
-                        id_issuance_place_name = student.province1.name,
+                        id_issuance_province_name = student.province1.name,
                         id_issuance_date = student.id_issuance_date,
                         id_expiry_date = student.id_expiry_date,
                         academic_level_id = student.academic_level_id,
@@ -79,7 +79,10 @@ namespace VenturaITC.DSMS.Controllers
                         cell_phone1 = student.cell_phone1,
                         cell_phone2 = student.cell_phone2,
                         email = student.email,
-                        category_name = GetItemDescription("categories", student.enrollments.Where(m => m.student_id == student.id).First().id),
+                        license_id = student.enrollments.Where(m => m.student_id == student.id).First().id,
+                        license_name = GetItemDescription("licenses", student.enrollments.Where(m => m.student_id == student.id).First().id),
+                        license_status_id = db.student_license_status.Where(m=>m.student_id==student.id).First().license_status_id,
+                        license_status_name = GetItemDescription("licenses", student.enrollments.Where(m => m.student_id == student.id).First().id),
                         enrollmentDate = student.enrollments.Where(m => m.student_id == student.id).First().date,
                         username = LoginUtils.GetLoggedUserName(),
                         pictureContent = student.documents.Where(m => m.document_type_id == (int)Enumeration.DocumentType.Picture)
@@ -192,7 +195,7 @@ namespace VenturaITC.DSMS.Controllers
                         model.student_type_id,
                         model.gender_id,
                         model.id_issuance_province,
-                        model.category_id,
+                        model.license_id,
                         model.payment_type_id
                         );
 
@@ -312,13 +315,14 @@ namespace VenturaITC.DSMS.Controllers
 
                 enrollment enroll = new enrollment()
                 {
-                    category_id = model.category_id,
+                    license_id = model.license_id,
                     payment_id = paym.id,
                     payment_type_id = model.payment_type_id,
                     student_id = stud.id,
                     date = DateTime.Now,
                     user_id = LoginUtils.GetLoggedUserID()
                 };
+
 
                 //For partial payment
                 if (model.payment_type_id == 2)
@@ -333,6 +337,16 @@ namespace VenturaITC.DSMS.Controllers
 
                 db.enrollments.Add(enroll);
 
+
+                //Set license status
+                student_license_status licenseStatus = new student_license_status()
+                {
+                    license_status_id = (int)Enumeration.LicenseStatus.Theory,
+                    student_id = stud.id
+                };
+
+                db.student_license_status.Add(licenseStatus);
+
                 //Save all changes
                 db.SaveChanges();
 
@@ -346,7 +360,7 @@ namespace VenturaITC.DSMS.Controllers
                 model.student_type_id,
                 model.gender_id,
                 model.id_issuance_province,
-                model.category_id,
+                model.license_id,
                 model.payment_type_id
                 );
 
@@ -435,7 +449,7 @@ namespace VenturaITC.DSMS.Controllers
                 ViewBag.student_type_id = new SelectList(db.student_type, "id", "name");
                 ViewBag.gender_id = new SelectList(db.genders, "id", "name");
                 ViewBag.id_issuance_province = new SelectList(db.provinces, "id", "name");
-                ViewBag.category_id = new SelectList(db.categories, "id", "name");
+                ViewBag.license_id = new SelectList(db.licenses, "id", "name");
                 ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name");
             }
             catch (Exception)
@@ -455,7 +469,7 @@ namespace VenturaITC.DSMS.Controllers
         /// <param name="student_type_id">The student type id.</param>
         /// <param name="gender_id">The gender id</param>
         /// <param name="id_issuance_province">The ID issuance province's id</param>
-        /// <param name="category_id">The category id.</param>
+        /// <param name="license_id">The license id.</param>
         /// <param name="payment_type_id">The payment type id.</param>
         private void BindDropdownsOnPostView(
             int academic_level_id,
@@ -464,7 +478,7 @@ namespace VenturaITC.DSMS.Controllers
             int student_type_id,
             int gender_id,
             int id_issuance_province,
-            int category_id,
+            int license_id,
             int payment_type_id)
         {
             try
@@ -475,7 +489,7 @@ namespace VenturaITC.DSMS.Controllers
                 ViewBag.student_type_id = new SelectList(db.student_type, "id", "name", student_type_id);
                 ViewBag.gender_id = new SelectList(db.genders, "id", "name", gender_id);
                 ViewBag.id_issuance_province = new SelectList(db.provinces, "id", "name", id_issuance_province);
-                ViewBag.category_id = new SelectList(db.categories, "id", "name", category_id);
+                ViewBag.license_id = new SelectList(db.licenses, "id", "name", license_id);
                 ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name", payment_type_id);
             }
             catch (Exception)

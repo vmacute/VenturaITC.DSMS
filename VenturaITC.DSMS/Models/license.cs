@@ -12,10 +12,10 @@ namespace VenturaITC.DSMS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class category
+    public partial class license
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public category()
+        public license()
         {
             this.enrollments = new HashSet<enrollment>();
         }
