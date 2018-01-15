@@ -240,10 +240,10 @@
                 <div class="col-md-6">
 
                     <div class="form-group required">
-                        @Html.LabelFor(model => model.id_issuance_place, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.id_issuance_province, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.DropDownListFor(model => model.id_issuance_place, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.id_issuance_place, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(model => model.id_issuance_province, null, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.id_issuance_province, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>

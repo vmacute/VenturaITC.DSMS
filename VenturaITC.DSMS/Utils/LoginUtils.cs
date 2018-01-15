@@ -33,5 +33,22 @@ namespace VenturaITC.DSMS.Utils
                 throw;
             }
         }
+
+
+        /// <summary>
+        /// Gets the name of the logged User
+        /// </summary>
+        /// <returns>The name of the logged User.</returns>
+        public static string GetLoggedUserName()
+        {
+            try
+            {
+                return "Ventura Macute" ;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

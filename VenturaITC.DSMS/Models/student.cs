@@ -34,7 +34,7 @@ namespace VenturaITC.DSMS.Models
         public string mothers_name { get; set; }
         public string address { get; set; }
         public string id_number { get; set; }
-        public int id_issuance_place { get; set; }
+        public int id_issuance_province { get; set; }
         public System.DateTime id_issuance_date { get; set; }
         public System.DateTime id_expiry_date { get; set; }
         public int academic_level_id { get; set; }

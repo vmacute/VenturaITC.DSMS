@@ -208,7 +208,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Classes\Enumeration.cs" />
+    <Compile Include="Models\Enumeration.cs" />
     <Compile Include="Classes\Validator.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CultureController.cs" />
@@ -419,11 +419,6 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\_ResetUserPassword.cshtml" />
-    <Content Include="Views\Students-old\Create.cshtml" />
-    <Content Include="Views\Students-old\Delete.cshtml" />
-    <Content Include="Views\Students-old\Details.cshtml" />
-    <Content Include="Views\Students-old\Edit.cshtml" />
-    <Content Include="Views\Students-old\Index.cshtml" />
     <Content Include="Views\Students\Create.cshtml" />
     <Content Include="Views\Students\Delete.cshtml" />
     <Content Include="Views\Students\Details.cshtml" />

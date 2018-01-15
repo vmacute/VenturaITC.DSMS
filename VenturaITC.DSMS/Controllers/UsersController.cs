@@ -72,7 +72,7 @@ namespace VenturaITC.DSMS.Controllers
                     user.current_login_attempts = 0;
                     user.registration_date = DateTime.Now;
                     user.registration_user = "VAM";
-                    user.status = Enumeration.DatabaseDataStatus.ACTIVE.ToString();
+                    user.status = Enumeration.DatabaseDataStatus.Active.ToString();
 
                     db.users.Add(user);
                     db.SaveChanges();

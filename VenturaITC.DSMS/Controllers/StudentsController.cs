@@ -50,23 +50,41 @@ namespace VenturaITC.DSMS.Controllers
 
                 foreach (var student in studentList)
                 {
-                    student.documents.Where(m => m.student_id == 1);
-
-                    List<document_type> docTypes = new List<document_type>();
-
-                    foreach (var id in student.documents.Select(m => m.document_type_id).ToList())
-                    {
-                        docTypes.Add(db.document_type.Find(id));
-                    }
-
                     StudentEnrolmentViewModel studentModel = new StudentEnrolmentViewModel
                     {
                         student_id = student.id,
                         full_name = student.full_name,
-                        student_type_name = GetItemDescription("student_type", student.student_type.id)
-                      //  category_name = GetItemDescription("categories", student.enrollments.Where(m => m.student_id == student.id).First().id)
-                      //  documents = new SelectList(docTypes, "id", "name")
-
+                        student_type_name = GetItemDescription("student_type", student.student_type.id),
+                        documents = new SelectList(db.document_type.Where(m => student.documents.Select(_m => _m.document_type_id).ToList().Contains(m.id)).ToList(), "id", "name"),
+                        birth_date = student.birth_date,
+                        marital_status_id = student.marital_status_id,
+                        marital_status_name = student.marital_status.name,
+                        gender_id = student.gender_id,
+                        gender_name = student.gender.name,
+                        place_of_birth = student.place_of_birth,
+                        province_of_birth_id = student.province_of_birth_id,
+                        province_of_birth_name = student.province.name,
+                        fathers_name = student.fathers_name,
+                        mothers_name = student.mothers_name,
+                        address = student.address,
+                        id_number = student.id_number,
+                        id_issuance_province = student.id_issuance_province,
+                        id_issuance_place_name = student.province1.name,
+                        id_issuance_date = student.id_issuance_date,
+                        id_expiry_date = student.id_expiry_date,
+                        academic_level_id = student.academic_level_id,
+                        academic_level_name = student.academic_level.name,
+                        job_title = student.job_title,
+                        phone_number = student.phone_number,
+                        cell_phone1 = student.cell_phone1,
+                        cell_phone2 = student.cell_phone2,
+                        email = student.email,
+                        category_name = GetItemDescription("categories", student.enrollments.Where(m => m.student_id == student.id).First().id),
+                        enrollmentDate = student.enrollments.Where(m => m.student_id == student.id).First().date,
+                        username = LoginUtils.GetLoggedUserName(),
+                        pictureContent = student.documents.Where(m => m.document_type_id == (int)Enumeration.DocumentType.Picture)
+                                .FirstOrDefault() != null ? student.documents.Where(m => m.document_type_id == (int)Enumeration.DocumentType.Picture)
+                                .FirstOrDefault().document_content : null
 
                     };
 
@@ -173,7 +191,7 @@ namespace VenturaITC.DSMS.Controllers
                         model.province_of_birth_id,
                         model.student_type_id,
                         model.gender_id,
-                        model.id_issuance_place,
+                        model.id_issuance_province,
                         model.category_id,
                         model.payment_type_id
                         );
@@ -195,7 +213,7 @@ namespace VenturaITC.DSMS.Controllers
                     mothers_name = model.mothers_name,
                     address = model.address,
                     id_number = model.id_number,
-                    id_issuance_place = model.id_issuance_place,
+                    id_issuance_province = model.id_issuance_province,
                     id_issuance_date = model.id_issuance_date,
                     id_expiry_date = model.id_expiry_date,
                     academic_level_id = model.academic_level_id,
@@ -204,7 +222,7 @@ namespace VenturaITC.DSMS.Controllers
                     cell_phone1 = model.cell_phone1,
                     cell_phone2 = model.cell_phone2,
                     email = model.email,
-                    status_id = 1
+                    status_id = (int)Enumeration.DatabaseDataStatus.Active
                 };
 
                 db.students.Add(stud);
@@ -327,7 +345,7 @@ namespace VenturaITC.DSMS.Controllers
                 model.province_of_birth_id,
                 model.student_type_id,
                 model.gender_id,
-                model.id_issuance_place,
+                model.id_issuance_province,
                 model.category_id,
                 model.payment_type_id
                 );
@@ -356,7 +374,7 @@ namespace VenturaITC.DSMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "number,student_type_id,full_name,first_name,last_name,birth_date,marital_status_id,gender_id,place_of_birth,province_of_birth_id,fathers_name,mothers_name,address,id_number,id_issuance_place,id_issuance_date,id_expiry_date,academic_level_id,job_title,phone_number,cell_phone1,cell_phone2,email,status_id")] student student)
+        public ActionResult Edit([Bind(Include = "number,student_type_id,full_name,first_name,last_name,birth_date,marital_status_id,gender_id,place_of_birth,province_of_birth_id,fathers_name,mothers_name,address,id_number,id_issuance_province,id_issuance_date,id_expiry_date,academic_level_id,job_title,phone_number,cell_phone1,cell_phone2,email,status_id")] student student)
         {
             if (ModelState.IsValid)
             {
@@ -416,7 +434,7 @@ namespace VenturaITC.DSMS.Controllers
                 ViewBag.status_id = new SelectList(db.status, "id", "name");
                 ViewBag.student_type_id = new SelectList(db.student_type, "id", "name");
                 ViewBag.gender_id = new SelectList(db.genders, "id", "name");
-                ViewBag.id_issuance_place = new SelectList(db.provinces, "id", "name");
+                ViewBag.id_issuance_province = new SelectList(db.provinces, "id", "name");
                 ViewBag.category_id = new SelectList(db.categories, "id", "name");
                 ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name");
             }
@@ -429,18 +447,23 @@ namespace VenturaITC.DSMS.Controllers
 
 
         /// <summary>
-        ///  Binds the dropdowns on the Post view method.
+        /// Binds the dropdowns on the Post view method.
         /// </summary>
-        /// <param name="st">The student model</param>
-        /// <param name="category_id">The CategoryID.</param>
-        /// <param name="payment_type_id">The payment type ID.</param>
+        /// <param name="academic_level_id">The academic level id.</param>
+        /// <param name="marital_status_id">The marital status id.</param>
+        /// <param name="province_of_birth_id">The province of birth id</param>
+        /// <param name="student_type_id">The student type id.</param>
+        /// <param name="gender_id">The gender id</param>
+        /// <param name="id_issuance_province">The ID issuance province's id</param>
+        /// <param name="category_id">The category id.</param>
+        /// <param name="payment_type_id">The payment type id.</param>
         private void BindDropdownsOnPostView(
             int academic_level_id,
             int marital_status_id,
             int province_of_birth_id,
             int student_type_id,
             int gender_id,
-            int id_issuance_place,
+            int id_issuance_province,
             int category_id,
             int payment_type_id)
         {
@@ -451,7 +474,7 @@ namespace VenturaITC.DSMS.Controllers
                 ViewBag.province_of_birth_id = new SelectList(db.provinces, "id", "name", province_of_birth_id);
                 ViewBag.student_type_id = new SelectList(db.student_type, "id", "name", student_type_id);
                 ViewBag.gender_id = new SelectList(db.genders, "id", "name", gender_id);
-                ViewBag.id_issuance_place = new SelectList(db.provinces, "id", "name", id_issuance_place);
+                ViewBag.id_issuance_province = new SelectList(db.provinces, "id", "name", id_issuance_province);
                 ViewBag.category_id = new SelectList(db.categories, "id", "name", category_id);
                 ViewBag.payment_type_id = new SelectList(db.payment_type, "id", "name", payment_type_id);
             }

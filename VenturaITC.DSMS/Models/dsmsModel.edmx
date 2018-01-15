@@ -169,7 +169,7 @@
           <Property Name="mothers_name" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="address" Type="varchar" MaxLength="255" />
           <Property Name="id_number" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="id_issuance_place" Type="int" Nullable="false" />
+          <Property Name="id_issuance_province" Type="int" Nullable="false" />
           <Property Name="id_issuance_date" Type="date" Nullable="false" />
           <Property Name="id_expiry_date" Type="date" Nullable="false" />
           <Property Name="academic_level_id" Type="int" Nullable="false" />
@@ -414,7 +414,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="student">
-              <PropertyRef Name="id_issuance_place" />
+              <PropertyRef Name="id_issuance_province" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -914,7 +914,7 @@
           <Property Name="mothers_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="id_number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="id_issuance_place" Type="Int32" Nullable="false" />
+          <Property Name="id_issuance_province" Type="Int32" Nullable="false" />
           <Property Name="id_issuance_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="id_expiry_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="academic_level_id" Type="Int32" Nullable="false" />
@@ -1211,7 +1211,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="student">
-              <PropertyRef Name="id_issuance_place" />
+              <PropertyRef Name="id_issuance_province" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1435,7 +1435,7 @@
                 <ScalarProperty Name="academic_level_id" ColumnName="academic_level_id" />
                 <ScalarProperty Name="id_expiry_date" ColumnName="id_expiry_date" />
                 <ScalarProperty Name="id_issuance_date" ColumnName="id_issuance_date" />
-                <ScalarProperty Name="id_issuance_place" ColumnName="id_issuance_place" />
+                <ScalarProperty Name="id_issuance_province" ColumnName="id_issuance_province" />
                 <ScalarProperty Name="id_number" ColumnName="id_number" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="mothers_name" ColumnName="mothers_name" />

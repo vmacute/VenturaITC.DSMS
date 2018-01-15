@@ -55,7 +55,9 @@ namespace VenturaITC.DSMS.ViewModels
 
         [Display(Name = "IDIssuancePlace", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDIssuancePlaceRequired")]
-        public int id_issuance_place { get; set; }
+        public int id_issuance_province { get; set; }
+
+        public string id_issuance_place_name { get; set; }
 
         [Display(Name = "IDIssuanceDate", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "IDIssuanceDateRequired")]
@@ -91,17 +93,25 @@ namespace VenturaITC.DSMS.ViewModels
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "MaritalStatusRequired")]
         public int marital_status_id { get; set; }
 
+        public string marital_status_name { get; set; }
+
         [Display(Name = "Gender", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "GenderRequired")]
         public int gender_id { get; set; }
+
+        public string gender_name { get; set; }
 
         [Display(Name = "ProvinceOfBirth", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "ProvinceOfBirthRequired")]
         public int province_of_birth_id { get; set; }
 
+        public string province_of_birth_name { get; set; }
+
         [Display(Name = "AcademicLevel", ResourceType = typeof(ResourcesFields))]
         [Required(ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "AcademicLevelRequired")]
         public int academic_level_id { get; set; }
+
+        public string academic_level_name { get; set; }
 
         //[Display(Name = "Status", ResourceType = typeof(ResourcesFields))]
         //public string name;
@@ -147,6 +157,8 @@ namespace VenturaITC.DSMS.ViewModels
         [Display(Name = "Picture", ResourceType = typeof(ResourcesFields))]
         [FileExtensions(Extensions = "png,jpg,jpeg", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PictureInvalidFormat")]
         public HttpPostedFileBase picture { get; set; }
+
+        public byte[] pictureContent { get; set; }
 
         [Display(Name = "IDCopy", ResourceType = typeof(ResourcesFields))]
         [RegularExpression(@".*\.([pP][dD][fFG])$", ErrorMessageResourceType = typeof(ResourcesFields), ErrorMessageResourceName = "PDFInvalidFormat")]

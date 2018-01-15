@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace VenturaITC.DSMS.Classes
+namespace VenturaITC.DSMS.Models
 {
     public class Enumeration
     {
@@ -35,11 +35,11 @@ namespace VenturaITC.DSMS.Classes
         /// </summary>
         public enum DocumentType
         {
-            PICTURE,
-            ID_COPY,
-            CRIMINAL_RECORD,
-            MEDICAL_CERTIFICATE,
-            MILITAR_SERVICE_DECLARATION
+            Picture = 1,
+            IDCopy = 2,
+            MedicalCertificate=3,
+            CriminalRecordCertificate = 4,
+            MilitaryServiceStatement = 5
         }
 
         /// <summary>
@@ -47,8 +47,8 @@ namespace VenturaITC.DSMS.Classes
         /// </summary>
         public enum DatabaseDataStatus
         {
-            ACTIVE,
-            DELETED
+            Active = 1,
+            Deleted = 2
         }
 
         /// <summary>
