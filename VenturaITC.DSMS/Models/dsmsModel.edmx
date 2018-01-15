@@ -78,13 +78,6 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="percentage" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <EntityType Name="licence_status">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="license">
           <Key>
             <PropertyRef Name="id" />
@@ -92,6 +85,13 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="cost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="license_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="marital_status">
           <Key>
@@ -386,10 +386,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_student_license_status_licence_status">
-          <End Role="licence_status" Type="Self.licence_status" Multiplicity="1" />
+          <End Role="license_status" Type="Self.license_status" Multiplicity="1" />
           <End Role="student_license_status" Type="Self.student_license_status" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="licence_status">
+            <Principal Role="license_status">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="student_license_status">
@@ -527,8 +527,8 @@
           <EntitySet Name="holiday" EntityType="Self.holiday" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="id_issuance_place" EntityType="Self.id_issuance_place" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="installment" EntityType="Self.installment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="licence_status" EntityType="Self.licence_status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="license" EntityType="Self.license" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="license_status" EntityType="Self.license_status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="marital_status" EntityType="Self.marital_status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="parameterization" EntityType="Self.parameterization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="parameterization_bool" EntityType="Self.parameterization_bool" Schema="dbo" store:Type="Tables" />
@@ -593,7 +593,7 @@
             <End Role="student" EntitySet="student" />
           </AssociationSet>
           <AssociationSet Name="FK_student_license_status_licence_status" Association="Self.FK_student_license_status_licence_status">
-            <End Role="licence_status" EntitySet="licence_status" />
+            <End Role="license_status" EntitySet="license_status" />
             <End Role="student_license_status" EntitySet="student_license_status" />
           </AssociationSet>
           <AssociationSet Name="FK_student_license_status_student" Association="Self.FK_student_license_status_student">
@@ -651,8 +651,8 @@
           <EntitySet Name="holidays" EntityType="dsmsModel.holiday" />
           <EntitySet Name="id_issuance_place" EntityType="dsmsModel.id_issuance_place" />
           <EntitySet Name="installments" EntityType="dsmsModel.installment" />
-          <EntitySet Name="licence_status" EntityType="dsmsModel.licence_status" />
           <EntitySet Name="licenses" EntityType="dsmsModel.license" />
+          <EntitySet Name="license_status" EntityType="dsmsModel.license_status" />
           <EntitySet Name="marital_status" EntityType="dsmsModel.marital_status" />
           <EntitySet Name="parameterizations" EntityType="dsmsModel.parameterization" />
           <EntitySet Name="parameterization_bool" EntityType="dsmsModel.parameterization_bool" />
@@ -721,7 +721,7 @@
             <End Role="payment_installment" EntitySet="payment_installment" />
           </AssociationSet>
           <AssociationSet Name="FK_student_license_status_licence_status" Association="dsmsModel.FK_student_license_status_licence_status">
-            <End Role="licence_status" EntitySet="licence_status" />
+            <End Role="license_status" EntitySet="license_status" />
             <End Role="student_license_status" EntitySet="student_license_status" />
           </AssociationSet>
           <AssociationSet Name="FK_student_marital_status" Association="dsmsModel.FK_student_marital_status">
@@ -848,14 +848,6 @@
           <Property Name="percentage" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <NavigationProperty Name="payment_installment" Relationship="dsmsModel.FK_payment_installment_installment" FromRole="installment" ToRole="payment_installment" />
         </EntityType>
-        <EntityType Name="licence_status">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="student_license_status" Relationship="dsmsModel.FK_student_license_status_licence_status" FromRole="licence_status" ToRole="student_license_status" />
-        </EntityType>
         <EntityType Name="license">
           <Key>
             <PropertyRef Name="id" />
@@ -864,6 +856,14 @@
           <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="cost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <NavigationProperty Name="enrollments" Relationship="dsmsModel.FK_enrollment_enrollment" FromRole="license" ToRole="enrollment" />
+        </EntityType>
+        <EntityType Name="license_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="student_license_status" Relationship="dsmsModel.FK_student_license_status_licence_status" FromRole="license_status" ToRole="student_license_status" />
         </EntityType>
         <EntityType Name="marital_status">
           <Key>
@@ -988,7 +988,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="student_id" Type="Int32" Nullable="false" />
           <Property Name="license_status_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="licence_status" Relationship="dsmsModel.FK_student_license_status_licence_status" FromRole="student_license_status" ToRole="licence_status" />
+          <NavigationProperty Name="license_status" Relationship="dsmsModel.FK_student_license_status_licence_status" FromRole="student_license_status" ToRole="license_status" />
           <NavigationProperty Name="student" Relationship="dsmsModel.FK_student_license_status_student" FromRole="student_license_status" ToRole="student" />
         </EntityType>
         <EntityType Name="student_type">
@@ -1200,10 +1200,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_student_license_status_licence_status">
-          <End Type="dsmsModel.licence_status" Role="licence_status" Multiplicity="1" />
+          <End Type="dsmsModel.license_status" Role="license_status" Multiplicity="1" />
           <End Type="dsmsModel.student_license_status" Role="student_license_status" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="licence_status">
+            <Principal Role="license_status">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="student_license_status">
@@ -1406,18 +1406,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="licence_status">
-            <EntityTypeMapping TypeName="dsmsModel.licence_status">
-              <MappingFragment StoreEntitySet="licence_status">
+          <EntitySetMapping Name="licenses">
+            <EntityTypeMapping TypeName="dsmsModel.license">
+              <MappingFragment StoreEntitySet="license">
+                <ScalarProperty Name="cost" ColumnName="cost" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="licenses">
-            <EntityTypeMapping TypeName="dsmsModel.license">
-              <MappingFragment StoreEntitySet="license">
-                <ScalarProperty Name="cost" ColumnName="cost" />
+          <EntitySetMapping Name="license_status">
+            <EntityTypeMapping TypeName="dsmsModel.license_status">
+              <MappingFragment StoreEntitySet="license_status">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

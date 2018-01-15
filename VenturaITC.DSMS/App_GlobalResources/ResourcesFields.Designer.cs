@@ -547,7 +547,7 @@ namespace VenturaITC.DSMS.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Estado da Carta.
+        ///   Looks up a localized string similar to Fase da Carta.
         /// </summary>
         public static string LicenseStatus {
             get {

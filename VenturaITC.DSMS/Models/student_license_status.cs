@@ -18,7 +18,7 @@ namespace VenturaITC.DSMS.Models
         public int student_id { get; set; }
         public int license_status_id { get; set; }
     
-        public virtual licence_status licence_status { get; set; }
+        public virtual license_status license_status { get; set; }
         public virtual student student { get; set; }
     }
 }

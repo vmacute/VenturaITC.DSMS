@@ -50,6 +50,7 @@ namespace VenturaITC.DSMS.Controllers
 
                 foreach (var student in studentList)
                 {
+
                     StudentEnrolmentViewModel studentModel = new StudentEnrolmentViewModel
                     {
                         student_id = student.id,
@@ -82,7 +83,7 @@ namespace VenturaITC.DSMS.Controllers
                         license_id = student.enrollments.Where(m => m.student_id == student.id).First().id,
                         license_name = GetItemDescription("licenses", student.enrollments.Where(m => m.student_id == student.id).First().id),
                         license_status_id = db.student_license_status.Where(m=>m.student_id==student.id).First().license_status_id,
-                        license_status_name = GetItemDescription("licenses", student.enrollments.Where(m => m.student_id == student.id).First().id),
+                        license_status_name = GetItemDescription("license_status", db.student_license_status.Where(m => m.student_id == student.id).First().license_status_id),
                         enrollmentDate = student.enrollments.Where(m => m.student_id == student.id).First().date,
                         username = LoginUtils.GetLoggedUserName(),
                         pictureContent = student.documents.Where(m => m.document_type_id == (int)Enumeration.DocumentType.Picture)

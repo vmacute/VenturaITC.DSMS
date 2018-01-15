@@ -157,13 +157,19 @@
     <fieldset>
         <legend class="fieldset-legend">@Resources.ResourcesTitles.CategoryInfo</legend>
         <dl class="dl-horizontal">
-
             <dt>
                 @Html.DisplayNameFor(model => model.license_id)
             </dt>
 
             <dd>
                 @Html.DisplayFor(model => model.license_name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.license_status_id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.license_status_name)
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.enrollmentDate)

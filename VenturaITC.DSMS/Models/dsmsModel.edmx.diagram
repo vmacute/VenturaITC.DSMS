@@ -5,26 +5,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c9b119dd101b44a798bcb0eaf04080b9" Name="Diagram1" ZoomLevel="80">
-        <EntityTypeShape EntityType="dsmsModel.academic_level" Width="1.5" PointX="0.75" PointY="13" />
+        <EntityTypeShape EntityType="dsmsModel.academic_level" Width="1.5" PointX="0.75" PointY="17.75" />
         <EntityTypeShape EntityType="dsmsModel.db_data_status" Width="1.5" PointX="1.5" PointY="23.75" />
         <EntityTypeShape EntityType="dsmsModel.document" Width="1.5" PointX="5.25" PointY="1.75" />
         <EntityTypeShape EntityType="dsmsModel.document_type" Width="1.5" PointX="3" PointY="11" />
         <EntityTypeShape EntityType="dsmsModel.enrollment" Width="1.5" PointX="8.25" PointY="4.25" />
-        <EntityTypeShape EntityType="dsmsModel.gender" Width="1.5" PointX="0.75" PointY="15.375" />
+        <EntityTypeShape EntityType="dsmsModel.gender" Width="1.5" PointX="0.75" PointY="10.625" />
         <EntityTypeShape EntityType="dsmsModel.holiday" Width="1.5" PointX="8.75" PointY="8.75" />
         <EntityTypeShape EntityType="dsmsModel.id_issuance_place" Width="1.5" PointX="10.75" PointY="0.75" />
         <EntityTypeShape EntityType="dsmsModel.installment" Width="1.5" PointX="8.25" PointY="1.125" />
-        <EntityTypeShape EntityType="dsmsModel.licence_status" Width="1.5" PointX="3" PointY="14.125" />
-        <EntityTypeShape EntityType="dsmsModel.license" Width="1.5" PointX="6" PointY="8" />
-        <EntityTypeShape EntityType="dsmsModel.marital_status" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="dsmsModel.license" Width="1.5" PointX="6" PointY="10.375" />
+        <EntityTypeShape EntityType="dsmsModel.license_status" Width="1.5" PointX="3" PointY="14.125" />
+        <EntityTypeShape EntityType="dsmsModel.marital_status" Width="1.5" PointX="0.75" PointY="15.375" />
         <EntityTypeShape EntityType="dsmsModel.parameterization" Width="1.5" PointX="10.75" PointY="8.75" />
         <EntityTypeShape EntityType="dsmsModel.parameterization_bool" Width="1.5" PointX="8.75" PointY="11.75" />
         <EntityTypeShape EntityType="dsmsModel.payment" Width="1.5" PointX="6" PointY="22.25" />
         <EntityTypeShape EntityType="dsmsModel.payment_installment" Width="1.5" PointX="10.5" PointY="4.75" />
         <EntityTypeShape EntityType="dsmsModel.payment_status" Width="1.5" PointX="10.75" PointY="11.75" />
-        <EntityTypeShape EntityType="dsmsModel.payment_type" Width="1.5" PointX="6" PointY="10.5" />
+        <EntityTypeShape EntityType="dsmsModel.payment_type" Width="1.5" PointX="6" PointY="8" />
         <EntityTypeShape EntityType="dsmsModel.province" Width="1.5" PointX="0.75" PointY="5.125" />
-        <EntityTypeShape EntityType="dsmsModel.status" Width="1.5" PointX="0.75" PointY="10.625" />
+        <EntityTypeShape EntityType="dsmsModel.status" Width="1.5" PointX="0.75" PointY="13" />
         <EntityTypeShape EntityType="dsmsModel.student" Width="1.5" PointX="3" PointY="2.25" />
         <EntityTypeShape EntityType="dsmsModel.student_license_status" Width="1.5" PointX="5.25" PointY="5" />
         <EntityTypeShape EntityType="dsmsModel.student_type" Width="1.5" PointX="0.75" PointY="8.375" />

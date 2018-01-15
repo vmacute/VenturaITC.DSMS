@@ -34,8 +34,8 @@ namespace VenturaITC.DSMS.Models
         public virtual DbSet<holiday> holidays { get; set; }
         public virtual DbSet<id_issuance_place> id_issuance_place { get; set; }
         public virtual DbSet<installment> installments { get; set; }
-        public virtual DbSet<licence_status> licence_status { get; set; }
         public virtual DbSet<license> licenses { get; set; }
+        public virtual DbSet<license_status> license_status { get; set; }
         public virtual DbSet<marital_status> marital_status { get; set; }
         public virtual DbSet<parameterization> parameterizations { get; set; }
         public virtual DbSet<parameterization_bool> parameterization_bool { get; set; }

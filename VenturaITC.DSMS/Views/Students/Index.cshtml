@@ -4,6 +4,37 @@
     ViewBag.Title = "Index";
 }
 
+@section scripts{
+    <script>
+        //Handles the documents DropDownList change event.
+        $('#documents').change(function () {
+
+            alert('Helo world');
+
+        //    var categoryID = $('#license_id').val();
+
+        //    if (categoryID != '') {
+        //        $.getJSON("/PaymentUtils/GetCategoryCost", { categoryID: categoryID }, function (data) {
+
+        //            if ($('#student_type_id').val() != "2") {
+        //                $('#payment_type_id').prop('disabled', false);
+        //            }
+
+        //            $('#totalAmount').val(data.categoryCost);
+        //        })
+        //            .fail(function (data) {
+        //                alert("An error ocurred: " + data.responseText);
+        //            });
+        //    } else {
+        //        $('#payment_type_id').prop('disabled', true);
+        //        $('#totalAmount').val('');
+        //    }
+        });
+
+    </script>
+
+}
+
 <h2>@Resources.ResourcesTitles.StudentList</h2>
 
 <p>
@@ -24,40 +55,47 @@
             @Html.DisplayNameFor(model => model.license_id)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.license_status_id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.enrollmentDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.documents)
-        </th>       
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.student_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.full_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.student_type_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.license_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.enrollmentDate)
-        </td>
-        <td>
-            @*@Html.DisplayFor(modelItem => item.documents)*@
-        </td>
-        <td>
-            @Html.ActionLink(@Resources.ResourcesLinks.Edit, "Edit", new { id=item.student_id }) |
-            @Html.ActionLink(@Resources.ResourcesLinks.Details, "Details", new { id=item.student_id }) |
-            @Html.ActionLink(@Resources.ResourcesLinks.Delete, "Delete", new { id=item.student_id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.student_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.full_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.student_type_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.license_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.license_status_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enrollmentDate)
+            </td>
+            <td>
+                @Html.DropDownListFor(modelItem => item.documents, item.documents as SelectList, @Resources.ResourcesFields.DropdownOptionLabel, htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.ActionLink(@Resources.ResourcesLinks.Edit, "Edit", new { id = item.student_id }) |
+                @Html.ActionLink(@Resources.ResourcesLinks.Details, "Details", new { id = item.student_id }) |
+                @Html.ActionLink(@Resources.ResourcesLinks.Delete, "Delete", new { id = item.student_id })
+            </td>
+        </tr>
+    }
 
 </table>

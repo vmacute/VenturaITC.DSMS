@@ -267,10 +267,10 @@
     <Compile Include="Models\installment.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\licence_status.cs">
+    <Compile Include="Models\license.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\license.cs">
+    <Compile Include="Models\license_status.cs">
       <DependentUpon>dsmsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\marital_status.cs">
