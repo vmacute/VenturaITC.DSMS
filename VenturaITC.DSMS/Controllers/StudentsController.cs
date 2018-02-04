@@ -28,7 +28,7 @@ namespace VenturaITC.DSMS.Controllers
     /// </history>
     public class StudentsController : BaseController
     {
-        private _dsmsEntities db = new _dsmsEntities();
+        private dsmsEntities db = new dsmsEntities();
 
 
         /// <summary>
